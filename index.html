@@ -370,8 +370,9 @@
             background: rgba(139, 92, 246, 0.05);
             border: 1px solid rgba(139, 92, 246, 0.2);
             border-radius: 16px;
-            padding: 2rem;
+            padding: 1.5rem;
             transition: all 0.3s;
+            text-align: center;
         }
 
         .topic-card:hover {
@@ -382,88 +383,15 @@
         }
 
         .topic-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
         }
 
         .topic-card h3 {
             color: var(--violet-light);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .topic-card p {
-            color: var(--gray-400);
-            line-height: 1.6;
-        }
-
-        .formats-section {
-            background: rgba(59, 130, 246, 0.05);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .formats-section h3 {
-            color: var(--blue-light);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .formats-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .format-item {
-            background: rgba(59, 130, 246, 0.1);
-            padding: 1.5rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .format-item h4 {
-            color: var(--blue-light);
-            margin-bottom: 0.5rem;
-        }
-
-        .format-item p {
-            color: var(--gray-400);
-            font-size: 0.9rem;
-        }
-
-        .credentials-section {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 16px;
-            padding: 3rem;
-            margin: 3rem 0;
-        }
-
-        .credentials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .credential-item {
-            text-align: center;
-        }
-
-        .credential-item h4 {
-            color: var(--violet-light);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .credential-item p {
-            color: var(--gray-400);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            line-height: 1.4;
         }
 
         .engagement-showcase {
@@ -476,6 +404,12 @@
             padding: 1.5rem 2rem;
             margin-bottom: 1.5rem;
             border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .engagement-item:hover {
+            background: rgba(251, 146, 60, 0.08);
+            transform: translateX(5px);
         }
 
         .engagement-item h4 {
@@ -483,8 +417,97 @@
             margin-bottom: 0.5rem;
         }
 
+        .engagement-item h4 a {
+            transition: all 0.3s;
+        }
+
+        .engagement-item h4 a:hover {
+            color: var(--orange-dark);
+        }
+
         .engagement-item p {
             color: var(--gray-400);
+        }
+
+        /* Speaking Gallery */
+        .speaking-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: var(--violet);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Speaking Table */
+        .speaking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(139, 92, 246, 0.03);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .speaking-table thead {
+            background: rgba(139, 92, 246, 0.15);
+        }
+
+        .speaking-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--violet-light);
+            font-weight: 600;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .speaking-table td {
+            padding: 1rem;
+            color: var(--gray-300);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .speaking-table tbody tr {
+            transition: all 0.3s;
+        }
+
+        .speaking-table tbody tr:hover {
+            background: rgba(139, 92, 246, 0.08);
+        }
+
+        .speaking-table a {
+            color: var(--orange);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .speaking-table a:hover {
+            color: var(--orange-dark);
+            text-decoration: underline;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
         }
 
         .cta-box {
@@ -528,8 +551,44 @@
                 grid-template-columns: 1fr;
             }
 
-            .formats-list {
+            .speaking-gallery {
                 grid-template-columns: 1fr;
+            }
+
+            .speaking-table {
+                font-size: 0.9rem;
+            }
+
+            .speaking-table th,
+            .speaking-table td {
+                padding: 0.75rem 0.5rem;
+            }
+
+            /* Stack table cells vertically on mobile */
+            .speaking-table thead {
+                display: none;
+            }
+
+            .speaking-table tbody tr {
+                display: block;
+                margin-bottom: 1.5rem;
+                border: 1px solid rgba(139, 92, 246, 0.2);
+                border-radius: 8px;
+            }
+
+            .speaking-table tbody td {
+                display: block;
+                text-align: left;
+                padding: 0.75rem;
+                border: none;
+            }
+
+            .speaking-table tbody td:before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: var(--violet-light);
+                display: block;
+                margin-bottom: 0.25rem;
             }
         }
     </style>
@@ -629,194 +688,250 @@
 
             <div class="speaking-intro">
                 <p>
-                    With 25 years of research and hands-on experience bridging psychology, technology, and human behavior, 
-                    I deliver keynotes and workshops that transform how organizations approach digital well-being, 
-                    youth mental health, and ethical AI implementation.
+                    25 years of research bridging psychology, technology, and human behavior. Keynotes and workshops 
+                    on digital well-being, youth mental health, ethical AI, and gaming toxicity.
                 </p>
             </div>
 
-            <!-- Key Speaking Topics -->
-            <h3 style="text-align: center; color: var(--violet-light); font-size: 2rem; margin: 3rem 0 2rem;">
-                Key Speaking Topics
+            <!-- Speaking Gallery -->
+            <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
+                Dr. Ewa in Action
             </h3>
 
+            <div class="speaking-gallery">
+                <div class="gallery-item">
+                    <img src="/mnt/user-data/uploads/IMG_6394.jpeg" alt="Dr. Ewa presenting at conference">
+                </div>
+                <div class="gallery-item">
+                    <img src="/mnt/user-data/uploads/PJChmpg-0_21largestimage_3FMaxSize_3DImageSize5K.jpg" alt="Dr. Ewa keynote speaking">
+                </div>
+                <div class="gallery-item">
+                    <img src="/mnt/user-data/uploads/IMG_6474.jpeg" alt="Dr. Ewa presenting on toxicity and mental health">
+                </div>
+            </div>
+
+            <!-- Key Speaking Topics -->
             <div class="topics-grid">
                 <div class="topic-card">
-                    <div class="topic-icon">🧠</div>
-                    <h3>Psychology Meets AI</h3>
-                    <p>
-                        How behavioral science principles create ethical, effective AI systems. Exploring the intersection 
-                        of human psychology and artificial intelligence for positive outcomes.
-                    </p>
-                </div>
-
-                <div class="topic-card">
-                    <div class="topic-icon">🛡️</div>
-                    <h3>Digital Safety & Online Toxicity</h3>
-                    <p>
-                        Evidence-based strategies for creating safer online communities. Addressing cyberbullying, 
-                        harassment, and toxic behavior in gaming and social media platforms.
-                    </p>
-                </div>
-
-                <div class="topic-card">
                     <div class="topic-icon">💭</div>
-                    <h3>Positive Attitude Formation</h3>
-                    <p>
-                        How narratives shape behavior and transform treatment of marginalized groups. 
-                        Research-backed approaches to building inclusive, empathetic communities.
-                    </p>
-                </div>
-
-                <div class="topic-card">
-                    <div class="topic-icon">👥</div>
-                    <h3>Youth Mental Health in Digital Age</h3>
-                    <p>
-                        Practical insights from 15,000+ youth interventions. Understanding and addressing 
-                        the unique mental health challenges facing young people online.
-                    </p>
+                    <h3>Positive Attitude Formation & Emotional Intelligence</h3>
                 </div>
 
                 <div class="topic-card">
                     <div class="topic-icon">⚖️</div>
-                    <h3>Ethical AI Implementation</h3>
-                    <p>
-                        Building AI systems with human dignity at the core. Best practices for organizations 
-                        implementing AI while maintaining ethical standards and psychological safety.
-                    </p>
+                    <h3>Ethical AI & Human–Machine Empathy</h3>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🛡️</div>
+                    <h3>Digital Wellbeing & Online Safety</h3>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🧠</div>
+                    <h3>Mental Health in Education</h3>
                 </div>
 
                 <div class="topic-card">
                     <div class="topic-icon">🎮</div>
-                    <h3>Behavioral Science in Gaming</h3>
-                    <p>
-                        Transforming gaming communities through psychology-grounded interventions. 
-                        Creating positive player experiences while reducing toxic behavior.
-                    </p>
+                    <h3>Gaming Toxicity & Pro-Social Design</h3>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">👥</div>
+                    <h3>Youth Leadership & Cognitive Empowerment</h3>
                 </div>
             </div>
 
-            <!-- Speaking Formats -->
-            <div class="formats-section">
-                <h3>Speaking Formats</h3>
-                <div class="formats-list">
-                    <div class="format-item">
-                        <h4>🎤 Keynotes</h4>
-                        <p>45-60 minute inspiring presentations for conferences and large audiences</p>
-                    </div>
-                    <div class="format-item">
-                        <h4>🎓 Workshops</h4>
-                        <p>2-4 hour interactive sessions with practical takeaways</p>
-                    </div>
-                    <div class="format-item">
-                        <h4>💬 Panel Discussions</h4>
-                        <p>Expert perspectives on trending topics in tech and psychology</p>
-                    </div>
-                    <div class="format-item">
-                        <h4>🏢 Corporate Training</h4>
-                        <p>Customized programs for teams and leadership development</p>
-                    </div>
-                    <div class="format-item">
-                        <h4>🎥 Virtual Presentations</h4>
-                        <p>Engaging online sessions for remote audiences</p>
-                    </div>
-                    <div class="format-item">
-                        <h4>📚 Academic Lectures</h4>
-                        <p>Research-focused presentations for universities and institutions</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Credentials & Expertise -->
-            <div class="credentials-section">
-                <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin-bottom: 1rem;">
-                    Credentials & Expertise
-                </h3>
-                <div class="credentials-grid">
-                    <div class="credential-item">
-                        <h4>📜 Education</h4>
-                        <p>Ph.D. in Behavioral Science<br>Doctorate completed at age 24</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>🎓 Professional</h4>
-                        <p>Registered School Psychologist (C.Psych.)<br>25+ years experience</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>🏛️ Memberships</h4>
-                        <p>Ontario Psychological Association (OPA)<br>Canadian Psychological Association (CPA)<br>American Psychological Association (APA)</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>📊 Research</h4>
-                        <p>50+ peer-reviewed publications<br>Expert in attitude formation & digital behavior</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>💼 Leadership</h4>
-                        <p>Founder, Felixa Health<br>Director, CORE Centre</p>
-                    </div>
-                    <div class="credential-item">
-                        <h4>🌍 Impact</h4>
-                        <p>15,000+ youth helped<br>Global speaking engagements</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Past Engagements (Template) -->
-            <h3 style="text-align: center; color: var(--orange); font-size: 2rem; margin: 3rem 0 2rem;">
-                Speaking Engagements
+            <!-- Recent & Upcoming Engagements 2025 -->
+            <h3 style="text-align: center; color: var(--orange); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
+                Recent & Upcoming 2025
             </h3>
             
-            <div class="engagement-showcase">
-                <div class="engagement-item">
-                    <h4>International Conferences</h4>
-                    <p>Keynote presentations on behavioral science, AI ethics, and digital safety at conferences across North America and internationally</p>
-                </div>
-                
-                <div class="engagement-item">
-                    <h4>Academic Institutions</h4>
-                    <p>Guest lectures and workshops at universities on psychology, technology, and youth mental health</p>
-                </div>
-                
-                <div class="engagement-item">
-                    <h4>Corporate Events</h4>
-                    <p>Training sessions for tech companies, gaming studios, and organizations focused on digital well-being</p>
-                </div>
-                
-                <div class="engagement-item">
-                    <h4>Healthcare & Education Sectors</h4>
-                    <p>Professional development workshops for psychologists, educators, and healthcare providers</p>
-                </div>
+            <div class="table-container">
+                <table class="speaking-table">
+                    <thead>
+                        <tr>
+                            <th>Conference / Event</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Conference">Ontario Psychological Association Annual Conference<br><em>Finalist Poster: AI–Human Concordance</em></td>
+                            <td data-label="Location">Ontario, Canada</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link"><a href="https://psych.on.ca/" target="_blank">OPA</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Serious Play Conference / Esports Summit<br><em>Talk: The Future of Empathy in Gaming</em></td>
+                            <td data-label="Location">Rochester Institute of Technology, USA</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link"><a href="https://www.rit.edu/magic/seriousplay" target="_blank">RIT</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Digital Well-Being and Gaming Symposium<br><em>AI for Emotional Intelligence in Gaming</em></td>
+                            <td data-label="Location">RIT Magic Spell Studios (Peaceland Project)</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link"><a href="https://www.rit.edu/magic/" target="_blank">MAGIC</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">XP Game Developers Summit<br><em>Panel: Humanizing AI</em></td>
+                            <td data-label="Location">Toronto, Canada</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">University of Agder Research Series<br><em>Guest Lecture: Measuring Digital Empathy</em></td>
+                            <td data-label="Location">Norway</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link"><a href="https://www.uia.no/en" target="_blank">UiA</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Conference "Wiele języków – jedna tożsamość"<br><em>Lecture: Dwujęzyczność</em></td>
+                            <td data-label="Location">Montreal, Canada</td>
+                            <td data-label="Date">2025</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- What Audiences Gain -->
-            <div style="background: rgba(59, 130, 246, 0.05); border-radius: 16px; padding: 3rem; margin: 3rem 0;">
-                <h3 style="text-align: center; color: var(--blue-light); font-size: 1.8rem; margin-bottom: 2rem;">
-                    What Audiences Gain
-                </h3>
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-                        ✓ Evidence-based strategies grounded in 25 years of research and real-world application
-                    </p>
-                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-                        ✓ Actionable insights that can be implemented immediately in organizations and communities
-                    </p>
-                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-                        ✓ Fresh perspectives on the intersection of psychology, technology, and human behavior
-                    </p>
-                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
-                        ✓ Inspiring stories of transformation and impact from frontline experience
-                    </p>
-                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8;">
-                        ✓ Tools and frameworks for creating ethical, human-centered digital environments
-                    </p>
-                </div>
+            <!-- Selected Past Engagements -->
+            <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
+                Selected Past Engagements
+            </h3>
+            
+            <div class="table-container">
+                <table class="speaking-table">
+                    <thead>
+                        <tr>
+                            <th>Conference / Event</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                            <th>Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Conference">Toronto Catholic District School Board<br><em>Workshop: Mental Health in the Classroom</em></td>
+                            <td data-label="Location">Toronto, Canada</td>
+                            <td data-label="Date">Feb 2020</td>
+                            <td data-label="Link"><a href="https://www.tcdsb.org/" target="_blank">TCDSB</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Collision Conference<br><em>Panel: Empowering Women and Wellness in the Workplace</em></td>
+                            <td data-label="Location">Toronto, Canada</td>
+                            <td data-label="Date">May 2019</td>
+                            <td data-label="Link"><a href="https://collisionconf.com/" target="_blank">Collision</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">LD@School 6th Annual Educators' Institute<br><em>Workshop: Motivating Students with Learning Disabilities</em></td>
+                            <td data-label="Location">Canada</td>
+                            <td data-label="Date">Aug 2019</td>
+                            <td data-label="Link"><a href="https://www.ldatschool.ca/" target="_blank">LD@School</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Learning Disabilities Peel Region<br><em>Talk: Psycho-Educational Assessments</em></td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Date">Mar 2019</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">LD@School 5th Annual Educators' Institute<br><em>Session: IDEAL ME – Leadership Attitudes</em></td>
+                            <td data-label="Location">Toronto, Canada</td>
+                            <td data-label="Date">Aug 2018</td>
+                            <td data-label="Link"><a href="https://www.ldatschool.ca/" target="_blank">LD@School</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">National Mining University<br><em>Lecture: Management in Multicultural Society (videoconference)</em></td>
+                            <td data-label="Location">Dnipropetrovsk, Ukraine</td>
+                            <td data-label="Date">Jun 2018</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Rotary Club of Mississauga<br><em>Talk Series: Working Memory Strategies</em></td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Date">2016</td>
+                            <td data-label="Link"><a href="https://portal.clubrunner.ca/113" target="_blank">Rotary</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Polish Teachers Federation<br><em>Workshop: Enhancing Children's Interest in Learning</em></td>
+                            <td data-label="Location">Montreal, Canada</td>
+                            <td data-label="Date">2015</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Polish Teachers Federation<br><em>Lecture: Enhancing Children's Interest in Learning</em></td>
+                            <td data-label="Location">Burlington, Canada</td>
+                            <td data-label="Date">2014</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Mississauga Community Centre<br><em>Workshop: Changing Negative Attitudes in Children and Youth</em></td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Date">Jun 2014</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">National Academy of Neuropsychology<br><em>Poster: Social Intelligence Test-R</em></td>
+                            <td data-label="Location">San Diego, USA</td>
+                            <td data-label="Date">Oct 2006</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">14th General Meeting<br><em>Paper: Why Stories Make Us More Helpful</em></td>
+                            <td data-label="Location">Würzburg, Germany</td>
+                            <td data-label="Date">Jun 2005</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Conference on Intergroup Relations<br><em>Paper: Personal History and Stereotype</em></td>
+                            <td data-label="Location">Mądralin, Poland</td>
+                            <td data-label="Date">Jun 2004</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">ESCON Conference<br><em>Paper: Narrative Mode Influence on Person Impression</em></td>
+                            <td data-label="Location">Padova, Italy</td>
+                            <td data-label="Date">Sep 2003</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Polish Conference of Narrative Psychology<br><em>Presentation: Narrative Mode Influence</em></td>
+                            <td data-label="Location">St. Kathrin, Poland</td>
+                            <td data-label="Date">Sep 2003</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Warsaw Workshop on Social Cognition<br><em>Paper: Fear Appeal in PSA</em></td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Date">Jun 2001</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">Crackfilm Festival<br><em>Lecture: Fear Appeal in Public Service Campaigns</em></td>
+                            <td data-label="Location">Kraków, Poland</td>
+                            <td data-label="Date">May 2001</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Conference">International Conference: The Role of Media in Communication<br><em>Presentation: Social Advertising in Poland</em></td>
+                            <td data-label="Location">Wrocław, Poland</td>
+                            <td data-label="Date">Jun 2000</td>
+                            <td data-label="Link">—</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <!-- Call to Action -->
-            <div class="cta-box">
+            <div class="cta-box" style="margin-top: 3rem;">
                 <h3>Ready to Book Dr. Ewa for Your Event?</h3>
                 <p>
-                    Whether you're organizing a conference, corporate training, academic event, or community workshop, 
-                    let's discuss how we can create an impactful experience for your audience.
+                    Keynotes • Workshops • Panels • Corporate Training • Virtual Presentations
                 </p>
                 <a href="#contact" class="btn btn-primary" style="background: white; color: var(--violet-dark); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);">
                     Get in Touch
