@@ -977,6 +977,82 @@
             margin-top: 0.25rem;
         }
 
+        /* Publications Table Specific Styles */
+        .publications-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(18, 18, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .publications-table thead {
+            display: none;
+        }
+
+        .publications-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .publications-table td {
+            padding: 1rem;
+            color: var(--gray-300);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            vertical-align: top;
+            line-height: 1.8;
+        }
+
+        .publications-table tbody tr {
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .publications-table tbody tr::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .publications-table tbody tr:hover::before {
+            transform: scaleY(1);
+        }
+
+        .publications-table tbody tr:hover {
+            background: rgba(139, 92, 246, 0.05);
+            box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);
+        }
+
+        .publications-table a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .publications-table a:hover {
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .publications-table tbody tr.hidden-row {
+            display: none;
+        }
+
         footer {
             background: var(--black);
             border-top: 2px solid rgba(139, 92, 246, 0.2);
@@ -1013,25 +1089,29 @@
                 grid-template-columns: 1fr;
             }
 
-            .speaking-table, .research-table {
+            .speaking-table, .research-table, .publications-table {
                 font-size: 0.9rem;
             }
 
             .speaking-table th,
             .speaking-table td,
             .research-table th,
-            .research-table td {
+            .research-table td,
+            .publications-table th,
+            .publications-table td {
                 padding: 0.75rem 0.5rem;
             }
 
             /* Stack table cells vertically on mobile */
             .speaking-table thead,
-            .research-table thead {
+            .research-table thead,
+            .publications-table thead {
                 display: none;
             }
 
             .speaking-table tbody tr,
-            .research-table tbody tr {
+            .research-table tbody tr,
+            .publications-table tbody tr {
                 display: block;
                 margin-bottom: 1.5rem;
                 border: 1px solid rgba(139, 92, 246, 0.2);
@@ -1039,7 +1119,8 @@
             }
 
             .speaking-table tbody td,
-            .research-table tbody td {
+            .research-table tbody td,
+            .publications-table tbody td {
                 display: block;
                 text-align: left;
                 padding: 0.75rem;
@@ -1047,7 +1128,8 @@
             }
 
             .speaking-table tbody td:before,
-            .research-table tbody td:before {
+            .research-table tbody td:before,
+            .publications-table tbody td:before {
                 content: attr(data-label);
                 font-weight: 600;
                 color: var(--primary);
@@ -1065,6 +1147,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#speaking" class="nav-link">Speaking</a></li>
                 <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -1525,6 +1608,90 @@
         </div>
     </section>
 
+    <section class="section" id="publications" style="background: var(--black-light);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Publications</span>
+                <h2 class="section-title">Scholarly <span class="gradient-text">Contributions</span></h2>
+            </div>
+
+            <div class="speaking-intro">
+                <p>
+                    Peer-reviewed publications, books, and scholarly contributions spanning narrative psychology, 
+                    social advertising, behavioral science, and AI-driven digital safety solutions.
+                </p>
+            </div>
+
+            <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                Published Works
+            </h3>
+            
+            <div class="table-container">
+                <table class="publications-table">
+                    <tbody>
+                        <tr>
+                            <td data-label="Citation">Antczak, E. J. (2025). <em>Transforming digital human interaction: The Felixa psychological foundations.</em> Conceptual manuscript in progress.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Citation">Antczak, E. J. (2025). <em>Human–AI alignment in digital ethics: Toward proactive behavioral intervention systems.</em> Manuscript submitted for publication.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Citation">Antczak, E. J. (2025). <em>The psychology and technology behind safer gaming communities: How Felixa shapes safe online interactions</em> [PsyArXiv preprint]. <em>PsyArXiv.</em> <a href="https://osf.io/preprints/psyarxiv/utypx_v1" target="_blank">https://osf.io/preprints/psyarxiv/utypx_v1</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Citation">Antczak, E. J. (2018). <em>Happiness of other people does not make us happy.</em> <em>Toronto Waterfront Magazine.</em></td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Antczak, E. J. (2016–2018). <em>Bi-weekly columns.</em> <em>GazetaGazeta</em> (print & online).</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Antczak, E. J. (2008). <em>Propaganda dobrych serc – vademecum o reklamie społecznej</em> [<em>Propaganda of Good Hearts – Handbook on Social Advertising</em>]. Kraków, Poland: Agencja Wasilewski.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2007). <em>Narrative mode in impression formation.</em> <em>Psychology of Language and Communication, 11</em>(2), 65–83. <a href="https://www.researchgate.net/publication/237699669_Narrative_mode_in_impression_formation" target="_blank">https://www.researchgate.net/publication/237699669</a></td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2006). <em>A story and a stereotype: Two frames for person perception.</em> <em>Psychologia Społeczna, 1</em>(2), 121–131. <a href="https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.desklight-c5e36407-df59-454b-9ad1-c93cfb5ff9f0" target="_blank">View publication</a></td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Celiński, M. J., Salmon, J. D., Allen, L. M., Palucka, A., & Antczak, E. J. (2006). <em>Social Intelligence Test-R as a neuropsychological instrument</em> [Conference abstract]. <em>Archives of Clinical Neuropsychology, 21</em>(6), 544. <a href="https://academic.oup.com/acn/article/21/6/544/3185" target="_blank">https://academic.oup.com/acn/article/21/6/544/3185</a></td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Antczak, E. J. (2004). <em>Narrative mode influences mindset in understanding others</em> (Doctoral dissertation). University of Social Sciences and Humanities (SWPS University), Warsaw, Poland.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2003). <em>Personal history and stereotype as two contexts of person cognition.</em> In E. Zdankiewicz-Ścigała & T. Maruszewski (Eds.), <em>Around psychomanipulation</em> (pp. 201–218). Warsaw, Poland: Academica.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Antczak, E. J. (2002). <em>Seven chapters.</em> In D. Maison & P. Wasilewski (Eds.), <em>Propaganda dobrych serc, czyli rzecz o reklamie społecznej</em> (pp. 145–190). Kraków, Poland: Agencja Wasilewski. <a href="https://www.maisonlab.pl" target="_blank">https://www.maisonlab.pl</a></td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Citation">Antczak, E. J. (2001). <em>Fear and alexithymia influence public service announcement perception</em> (Master's thesis). University of Social Sciences and Humanities (SWPS University), Warsaw, Poland.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="show-more-btn" id="showMorePublicationsBtn" onclick="togglePublicationsRows()">
+                Show More ▼
+            </button>
+
+            <!-- Call to Action -->
+            <div class="cta-box" style="margin-top: 3rem;">
+                <h3>Explore My Research & Publications</h3>
+                <p>
+                    Interested in collaborating or learning more about my work in behavioral science and digital ethics?
+                </p>
+                <a href="#contact" class="btn btn-primary">
+                    Get in Touch
+                </a>
+                <a href="mailto:ewa@felixagaming.com" class="btn btn-outline">
+                    Email Directly
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1589,7 +1756,6 @@
         // Speaking table show more/less functionality
         function initializeSpeakingTable() {
             const tableRows = document.querySelectorAll('.speaking-table tbody tr');
-            // Hide all rows after the 4th one (index 3)
             tableRows.forEach((row, index) => {
                 if (index > 3) {
                     row.classList.add('hidden-row');
@@ -1603,20 +1769,17 @@
             const hiddenRows = document.querySelectorAll('.speaking-table tbody tr.hidden-row');
             
             if (hiddenRows.length > 0) {
-                // Show all rows
                 tableRows.forEach(row => {
                     row.classList.remove('hidden-row');
                 });
                 btn.innerHTML = 'Show Less ▲';
             } else {
-                // Hide rows after the 4th one
                 tableRows.forEach((row, index) => {
                     if (index > 3) {
                         row.classList.add('hidden-row');
                     }
                 });
                 btn.innerHTML = 'Show More ▼';
-                // Smooth scroll to the speaking section
                 setTimeout(() => {
                     document.querySelector('.speaking-table').scrollIntoView({ 
                         behavior: 'smooth', 
@@ -1629,7 +1792,6 @@
         // Research table show more/less functionality
         function initializeResearchTable() {
             const tableRows = document.querySelectorAll('.research-table tbody tr');
-            // Hide all rows after the 4th one (index 3)
             tableRows.forEach((row, index) => {
                 if (index > 3) {
                     row.classList.add('hidden-row');
@@ -1643,22 +1805,55 @@
             const hiddenRows = document.querySelectorAll('.research-table tbody tr.hidden-row');
             
             if (hiddenRows.length > 0) {
-                // Show all rows
                 tableRows.forEach(row => {
                     row.classList.remove('hidden-row');
                 });
                 btn.innerHTML = 'Show Less ▲';
             } else {
-                // Hide rows after the 4th one
                 tableRows.forEach((row, index) => {
                     if (index > 3) {
                         row.classList.add('hidden-row');
                     }
                 });
                 btn.innerHTML = 'Show More ▼';
-                // Smooth scroll to the research section
                 setTimeout(() => {
                     document.querySelector('.research-table').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 100);
+            }
+        }
+
+        // Publications table show more/less functionality
+        function initializePublicationsTable() {
+            const tableRows = document.querySelectorAll('.publications-table tbody tr');
+            tableRows.forEach((row, index) => {
+                if (index > 3) {
+                    row.classList.add('hidden-row');
+                }
+            });
+        }
+
+        function togglePublicationsRows() {
+            const tableRows = document.querySelectorAll('.publications-table tbody tr');
+            const btn = document.getElementById('showMorePublicationsBtn');
+            const hiddenRows = document.querySelectorAll('.publications-table tbody tr.hidden-row');
+            
+            if (hiddenRows.length > 0) {
+                tableRows.forEach(row => {
+                    row.classList.remove('hidden-row');
+                });
+                btn.innerHTML = 'Show Less ▲';
+            } else {
+                tableRows.forEach((row, index) => {
+                    if (index > 3) {
+                        row.classList.add('hidden-row');
+                    }
+                });
+                btn.innerHTML = 'Show More ▼';
+                setTimeout(() => {
+                    document.querySelector('.publications-table').scrollIntoView({ 
                         behavior: 'smooth', 
                         block: 'nearest' 
                     });
@@ -1670,6 +1865,7 @@
         window.addEventListener('DOMContentLoaded', function() {
             initializeSpeakingTable();
             initializeResearchTable();
+            initializePublicationsTable();
         });
     </script>
 </body>
