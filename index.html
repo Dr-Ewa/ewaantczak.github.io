@@ -346,6 +346,168 @@
             color: var(--violet-light);
         }
 
+        /* Speaking Section Specific Styles */
+        .speaking-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .speaking-intro p {
+            color: var(--gray-300);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .topic-card {
+            background: rgba(139, 92, 246, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .topic-card:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--violet);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+        }
+
+        .topic-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card h3 {
+            color: var(--violet-light);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .topic-card p {
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        .formats-section {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .formats-section h3 {
+            color: var(--blue-light);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .formats-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .format-item {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .format-item h4 {
+            color: var(--blue-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .format-item p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        .credentials-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 16px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .credential-item {
+            text-align: center;
+        }
+
+        .credential-item h4 {
+            color: var(--violet-light);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-item p {
+            color: var(--gray-400);
+        }
+
+        .engagement-showcase {
+            margin: 3rem 0;
+        }
+
+        .engagement-item {
+            background: rgba(251, 146, 60, 0.05);
+            border-left: 4px solid var(--orange);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .engagement-item h4 {
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+        }
+
+        .engagement-item p {
+            color: var(--gray-400);
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--violet-dark), var(--blue-dark));
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 4rem;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+        }
+
+        .cta-box h3 {
+            color: var(--white);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            color: var(--gray-300);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
         footer {
             background: var(--black);
             border-top: 1px solid rgba(139, 92, 246, 0.1);
@@ -361,6 +523,14 @@
             .hero-stats {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .formats-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -371,6 +541,7 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#speaking" class="nav-link">Speaking</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -449,7 +620,215 @@
         </div>
     </section>
 
-    <section class="section" id="contact" style="background: var(--black-light);">
+    <section class="section" id="speaking" style="background: var(--black-light);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Speaking & Workshops</span>
+                <h2 class="section-title">Inspiring <span class="gradient-text">Change</span> Through Insight</h2>
+            </div>
+
+            <div class="speaking-intro">
+                <p>
+                    With 25 years of research and hands-on experience bridging psychology, technology, and human behavior, 
+                    I deliver keynotes and workshops that transform how organizations approach digital well-being, 
+                    youth mental health, and ethical AI implementation.
+                </p>
+            </div>
+
+            <!-- Key Speaking Topics -->
+            <h3 style="text-align: center; color: var(--violet-light); font-size: 2rem; margin: 3rem 0 2rem;">
+                Key Speaking Topics
+            </h3>
+
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-icon">🧠</div>
+                    <h3>Psychology Meets AI</h3>
+                    <p>
+                        How behavioral science principles create ethical, effective AI systems. Exploring the intersection 
+                        of human psychology and artificial intelligence for positive outcomes.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🛡️</div>
+                    <h3>Digital Safety & Online Toxicity</h3>
+                    <p>
+                        Evidence-based strategies for creating safer online communities. Addressing cyberbullying, 
+                        harassment, and toxic behavior in gaming and social media platforms.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">💭</div>
+                    <h3>Positive Attitude Formation</h3>
+                    <p>
+                        How narratives shape behavior and transform treatment of marginalized groups. 
+                        Research-backed approaches to building inclusive, empathetic communities.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">👥</div>
+                    <h3>Youth Mental Health in Digital Age</h3>
+                    <p>
+                        Practical insights from 15,000+ youth interventions. Understanding and addressing 
+                        the unique mental health challenges facing young people online.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">⚖️</div>
+                    <h3>Ethical AI Implementation</h3>
+                    <p>
+                        Building AI systems with human dignity at the core. Best practices for organizations 
+                        implementing AI while maintaining ethical standards and psychological safety.
+                    </p>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-icon">🎮</div>
+                    <h3>Behavioral Science in Gaming</h3>
+                    <p>
+                        Transforming gaming communities through psychology-grounded interventions. 
+                        Creating positive player experiences while reducing toxic behavior.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Speaking Formats -->
+            <div class="formats-section">
+                <h3>Speaking Formats</h3>
+                <div class="formats-list">
+                    <div class="format-item">
+                        <h4>🎤 Keynotes</h4>
+                        <p>45-60 minute inspiring presentations for conferences and large audiences</p>
+                    </div>
+                    <div class="format-item">
+                        <h4>🎓 Workshops</h4>
+                        <p>2-4 hour interactive sessions with practical takeaways</p>
+                    </div>
+                    <div class="format-item">
+                        <h4>💬 Panel Discussions</h4>
+                        <p>Expert perspectives on trending topics in tech and psychology</p>
+                    </div>
+                    <div class="format-item">
+                        <h4>🏢 Corporate Training</h4>
+                        <p>Customized programs for teams and leadership development</p>
+                    </div>
+                    <div class="format-item">
+                        <h4>🎥 Virtual Presentations</h4>
+                        <p>Engaging online sessions for remote audiences</p>
+                    </div>
+                    <div class="format-item">
+                        <h4>📚 Academic Lectures</h4>
+                        <p>Research-focused presentations for universities and institutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credentials & Expertise -->
+            <div class="credentials-section">
+                <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin-bottom: 1rem;">
+                    Credentials & Expertise
+                </h3>
+                <div class="credentials-grid">
+                    <div class="credential-item">
+                        <h4>📜 Education</h4>
+                        <p>Ph.D. in Behavioral Science<br>Doctorate completed at age 24</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>🎓 Professional</h4>
+                        <p>Registered School Psychologist (C.Psych.)<br>25+ years experience</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>🏛️ Memberships</h4>
+                        <p>Ontario Psychological Association (OPA)<br>Canadian Psychological Association (CPA)<br>American Psychological Association (APA)</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>📊 Research</h4>
+                        <p>50+ peer-reviewed publications<br>Expert in attitude formation & digital behavior</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>💼 Leadership</h4>
+                        <p>Founder, Felixa Health<br>Director, CORE Centre</p>
+                    </div>
+                    <div class="credential-item">
+                        <h4>🌍 Impact</h4>
+                        <p>15,000+ youth helped<br>Global speaking engagements</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Past Engagements (Template) -->
+            <h3 style="text-align: center; color: var(--orange); font-size: 2rem; margin: 3rem 0 2rem;">
+                Speaking Engagements
+            </h3>
+            
+            <div class="engagement-showcase">
+                <div class="engagement-item">
+                    <h4>International Conferences</h4>
+                    <p>Keynote presentations on behavioral science, AI ethics, and digital safety at conferences across North America and internationally</p>
+                </div>
+                
+                <div class="engagement-item">
+                    <h4>Academic Institutions</h4>
+                    <p>Guest lectures and workshops at universities on psychology, technology, and youth mental health</p>
+                </div>
+                
+                <div class="engagement-item">
+                    <h4>Corporate Events</h4>
+                    <p>Training sessions for tech companies, gaming studios, and organizations focused on digital well-being</p>
+                </div>
+                
+                <div class="engagement-item">
+                    <h4>Healthcare & Education Sectors</h4>
+                    <p>Professional development workshops for psychologists, educators, and healthcare providers</p>
+                </div>
+            </div>
+
+            <!-- What Audiences Gain -->
+            <div style="background: rgba(59, 130, 246, 0.05); border-radius: 16px; padding: 3rem; margin: 3rem 0;">
+                <h3 style="text-align: center; color: var(--blue-light); font-size: 1.8rem; margin-bottom: 2rem;">
+                    What Audiences Gain
+                </h3>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        ✓ Evidence-based strategies grounded in 25 years of research and real-world application
+                    </p>
+                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        ✓ Actionable insights that can be implemented immediately in organizations and communities
+                    </p>
+                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        ✓ Fresh perspectives on the intersection of psychology, technology, and human behavior
+                    </p>
+                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                        ✓ Inspiring stories of transformation and impact from frontline experience
+                    </p>
+                    <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8;">
+                        ✓ Tools and frameworks for creating ethical, human-centered digital environments
+                    </p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-box">
+                <h3>Ready to Book Dr. Ewa for Your Event?</h3>
+                <p>
+                    Whether you're organizing a conference, corporate training, academic event, or community workshop, 
+                    let's discuss how we can create an impactful experience for your audience.
+                </p>
+                <a href="#contact" class="btn btn-primary" style="background: white; color: var(--violet-dark); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);">
+                    Get in Touch
+                </a>
+                <a href="mailto:ewa@felixagaming.com" class="btn btn-outline" style="border-color: white; color: white;">
+                    Email Directly
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
         <div class="container">
             <div class="section-header">
                 <span class="section-badge">Contact</span>
