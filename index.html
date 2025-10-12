@@ -12,20 +12,25 @@
     
     <style>
         :root {
-            --black: #0a0a0a;
-            --black-light: #1a1a1a;
-            --violet: #8b5cf6;
-            --violet-dark: #6d28d9;
-            --violet-light: #a78bfa;
-            --blue: #3b82f6;
-            --blue-dark: #1e40af;
-            --blue-light: #60a5fa;
-            --orange: #fb923c;
-            --orange-dark: #ea580c;
+            --black: #0a0a0f;
+            --black-light: #12121a;
+            --black-lighter: #1a1a24;
+            --primary: #8b5cf6;
+            --primary-dark: #7c3aed;
+            --primary-light: #a78bfa;
+            --secondary: #c084fc;
+            --secondary-dark: #a855f7;
+            --accent: #ec4899;
             --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
             --gray-300: #d1d5db;
             --gray-400: #9ca3af;
             --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
             --max-width: 1200px;
         }
 
@@ -53,15 +58,18 @@
             top: 0;
             width: 100%;
             padding: 1rem 0;
-            background: rgba(10, 10, 10, 0.95);
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
             padding: 0.75rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(10, 10, 15, 0.95);
+            box-shadow: 0 4px 30px rgba(139, 92, 246, 0.1);
         }
 
         .nav-container {
@@ -76,10 +84,20 @@
         .logo {
             font-size: 1.25rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--violet), var(--blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .nav-menu {
@@ -94,20 +112,23 @@
             font-weight: 500;
             transition: all 0.3s;
             position: relative;
+            padding: 0.5rem 0;
         }
 
         .nav-link:hover {
-            color: var(--violet-light);
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
         }
 
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--violet);
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
             transition: width 0.3s;
         }
 
@@ -124,30 +145,40 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 20%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: var(--violet);
-            filter: blur(150px);
-            opacity: 0.3;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            bottom: 20%;
-            right: -10%;
-            width: 400px;
-            height: 400px;
-            background: var(--blue);
-            filter: blur(150px);
-            opacity: 0.2;
+            bottom: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 50% 50%, rgba(192, 132, 252, 0.06) 0%, transparent 50%);
+            animation: pulse 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
         }
 
         .hero-content {
@@ -157,24 +188,17 @@
             width: 100%;
         }
 
-        .hero-badge {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 50px;
-            color: var(--violet-light);
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--white), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
         }
 
         .profile-image {
@@ -183,8 +207,51 @@
             margin: 1.5rem auto;
             border-radius: 50%;
             overflow: hidden;
-            border: 3px solid var(--violet);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.4),
+                        0 0 80px rgba(139, 92, 246, 0.2),
+                        inset 0 0 20px rgba(139, 92, 246, 0.1);
+            animation: glow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 300% 300%;
+            animation: gradient-rotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 40px rgba(139, 92, 246, 0.4),
+                            0 0 80px rgba(139, 92, 246, 0.2),
+                            inset 0 0 20px rgba(139, 92, 246, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 60px rgba(139, 92, 246, 0.6),
+                            0 0 120px rgba(139, 92, 246, 0.3),
+                            inset 0 0 30px rgba(139, 92, 246, 0.2);
+            }
+        }
+
+        @keyframes gradient-rotate {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .profile-image img {
@@ -194,17 +261,19 @@
         }
 
         .professional-title {
-            color: var(--violet-light);
+            color: var(--primary);
             font-size: clamp(1rem, 2vw, 1.3rem);
             margin: 1.5rem 0;
             font-weight: 500;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--violet), var(--blue));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
         }
 
         .hero-subtitle {
@@ -219,32 +288,57 @@
             display: inline-block;
             padding: 0.875rem 2rem;
             margin: 0.5rem;
-            border-radius: 50px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--violet), var(--blue));
-            color: white;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--black);
+            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.4);
+            border: 2px solid var(--primary);
+            font-weight: 700;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+            box-shadow: 0 6px 25px rgba(0, 217, 255, 0.6),
+                        0 0 40px rgba(0, 217, 255, 0.3);
         }
 
         .btn-outline {
             background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(139, 92, 246, 0.5);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
         }
 
         .btn-outline:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--violet);
+            background: rgba(0, 217, 255, 0.1);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .hero-stats {
@@ -253,26 +347,54 @@
             gap: 2rem;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(139, 92, 246, 0.2);
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            position: relative;
+        }
+
+        .hero-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            box-shadow: 0 0 10px var(--primary);
         }
 
         .stat-item {
             text-align: center;
+            position: relative;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(0, 217, 255, 0.03);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            background: rgba(0, 217, 255, 0.05);
+            border-color: rgba(0, 217, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
         }
 
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--orange), var(--violet));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.3));
         }
 
         .stat-label {
             color: var(--gray-400);
             font-size: 0.875rem;
             margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .section {
@@ -292,15 +414,16 @@
         .section-badge {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: rgba(251, 146, 60, 0.1);
-            border: 1px solid rgba(251, 146, 60, 0.3);
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
             border-radius: 50px;
-            color: var(--orange);
-            font-size: 0.85rem;
+            color: var(--primary);
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
         }
 
         .section-title {
@@ -318,32 +441,55 @@
         }
 
         .contact-card {
-            background: rgba(139, 92, 246, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            background: rgba(0, 217, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 217, 255, 0.2);
             border-radius: 12px;
             padding: 1.5rem;
             text-align: center;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
         }
 
         .contact-card:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--violet);
-            transform: translateY(-3px);
+            background: rgba(0, 217, 255, 0.06);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
         }
 
         .contact-card h3 {
-            color: var(--violet-light);
+            color: var(--primary);
             margin-bottom: 0.5rem;
+            font-weight: 600;
         }
 
         .contact-card a {
             color: var(--gray-300);
             text-decoration: none;
+            position: relative;
+            z-index: 1;
         }
 
         .contact-card a:hover {
-            color: var(--violet-light);
+            color: var(--primary);
         }
 
         /* Speaking Section Specific Styles */
@@ -367,31 +513,53 @@
         }
 
         .topic-card {
-            background: rgba(139, 92, 246, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 16px;
+            background: rgba(18, 18, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 12px;
             padding: 1.5rem;
             transition: all 0.3s;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .topic-card:hover::before {
+            left: 100%;
         }
 
         .topic-card:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: var(--violet);
+            background: rgba(18, 18, 26, 0.95);
+            border-color: var(--primary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3),
+                        inset 0 0 20px rgba(0, 217, 255, 0.05);
         }
 
         .topic-icon {
             font-size: 2rem;
             margin-bottom: 0.75rem;
+            filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.3));
         }
 
         .topic-card h3 {
-            color: var(--violet-light);
+            color: var(--white);
             font-size: 1.1rem;
             margin-bottom: 0;
             line-height: 1.4;
+            position: relative;
+            z-index: 1;
         }
 
         .engagement-showcase {
@@ -399,21 +567,26 @@
         }
 
         .engagement-item {
-            background: rgba(251, 146, 60, 0.05);
-            border-left: 4px solid var(--orange);
+            background: rgba(18, 18, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border-left: 4px solid var(--primary);
             padding: 1.5rem 2rem;
             margin-bottom: 1.5rem;
             border-radius: 8px;
             transition: all 0.3s;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-left-width: 4px;
         }
 
         .engagement-item:hover {
-            background: rgba(251, 146, 60, 0.08);
+            background: rgba(18, 18, 26, 0.9);
             transform: translateX(5px);
+            box-shadow: 0 5px 30px rgba(0, 217, 255, 0.2);
+            border-color: var(--primary);
         }
 
         .engagement-item h4 {
-            color: var(--orange);
+            color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
@@ -422,7 +595,8 @@
         }
 
         .engagement-item h4 a:hover {
-            color: var(--orange-dark);
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         .engagement-item p {
@@ -439,16 +613,18 @@
 
         .gallery-item {
             position: relative;
-            border-radius: 16px;
+            border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s;
-            border: 2px solid rgba(139, 92, 246, 0.2);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
-            border-color: var(--violet);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.3);
+            transform: scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 217, 255, 0.4),
+                        0 0 60px rgba(0, 217, 255, 0.2);
         }
 
         .gallery-item img {
@@ -463,46 +639,70 @@
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
-            background: rgba(139, 92, 246, 0.03);
+            background: rgba(18, 18, 26, 0.6);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
             overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .speaking-table thead {
-            background: rgba(139, 92, 246, 0.15);
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(139, 92, 246, 0.1));
+            border-bottom: 2px solid var(--primary);
         }
 
         .speaking-table th {
             padding: 1rem;
             text-align: left;
-            color: var(--violet-light);
+            color: var(--primary);
             font-weight: 600;
-            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
         }
 
         .speaking-table td {
             padding: 1rem;
             color: var(--gray-300);
-            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
         }
 
         .speaking-table tbody tr {
             transition: all 0.3s;
+            position: relative;
+        }
+
+        .speaking-table tbody tr::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .speaking-table tbody tr:hover::before {
+            transform: scaleY(1);
         }
 
         .speaking-table tbody tr:hover {
-            background: rgba(139, 92, 246, 0.08);
+            background: rgba(0, 217, 255, 0.05);
+            box-shadow: inset 0 0 20px rgba(0, 217, 255, 0.1);
         }
 
         .speaking-table a {
-            color: var(--orange);
+            color: var(--primary);
             text-decoration: none;
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .speaking-table a:hover {
-            color: var(--orange-dark);
-            text-decoration: underline;
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         .table-container {
@@ -511,31 +711,62 @@
         }
 
         .cta-box {
-            background: linear-gradient(135deg, var(--violet-dark), var(--blue-dark));
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.1), rgba(139, 92, 246, 0.1));
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+            border-radius: 16px;
             padding: 3rem;
             text-align: center;
             margin-top: 4rem;
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 217, 255, 0.2);
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 8s ease-in-out infinite;
         }
 
         .cta-box h3 {
             color: var(--white);
             font-size: 2rem;
             margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .cta-box p {
             color: var(--gray-300);
             font-size: 1.1rem;
             margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         footer {
             background: var(--black);
-            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            border-top: 2px solid rgba(0, 217, 255, 0.2);
             padding: 3rem 2rem 2rem;
             text-align: center;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            box-shadow: 0 0 10px var(--primary);
         }
 
         @media (max-width: 768px) {
@@ -572,7 +803,7 @@
             .speaking-table tbody tr {
                 display: block;
                 margin-bottom: 1.5rem;
-                border: 1px solid rgba(139, 92, 246, 0.2);
+                border: 1px solid rgba(0, 217, 255, 0.2);
                 border-radius: 8px;
             }
 
@@ -586,7 +817,7 @@
             .speaking-table tbody td:before {
                 content: attr(data-label);
                 font-weight: 600;
-                color: var(--violet-light);
+                color: var(--primary);
                 display: block;
                 margin-bottom: 0.25rem;
             }
@@ -608,8 +839,6 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-badge">Ph.D., C.Psych.</div>
-            
             <h1>Dr. Ewa J. Antczak</h1>
             
             <div class="profile-image">
@@ -694,7 +923,7 @@
             </div>
 
             <!-- Speaking Gallery -->
-            <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
+            <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);">
                 Dr. Ewa in Action
             </h3>
 
@@ -743,185 +972,165 @@
                 </div>
             </div>
 
-            <!-- Recent & Upcoming Engagements 2025 -->
-            <h3 style="text-align: center; color: var(--orange); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
-                Recent & Upcoming 2025
+            <!-- Speaking Engagements -->
+            <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);">
+                Speaking Engagements
             </h3>
             
             <div class="table-container">
                 <table class="speaking-table">
                     <thead>
                         <tr>
-                            <th>Conference / Event</th>
-                            <th>Location</th>
                             <th>Date</th>
-                            <th>Link</th>
+                            <th>Location</th>
+                            <th>Title / Event</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td data-label="Conference">Ontario Psychological Association Annual Conference<br><em>Finalist Poster: AI–Human Concordance</em></td>
-                            <td data-label="Location">Ontario, Canada</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link"><a href="https://psych.on.ca/" target="_blank">OPA</a></td>
+                            <td data-label="Date">Aug 15, 2025</td>
+                            <td data-label="Location">Rochester, USA</td>
+                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Conference at the University of Rochester</a><br><em>"The Psychology and Technology Behind Safer Gaming"</em></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Serious Play Conference / Esports Summit<br><em>Talk: The Future of Empathy in Gaming</em></td>
-                            <td data-label="Location">Rochester Institute of Technology, USA</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link"><a href="https://www.rit.edu/magic/seriousplay" target="_blank">RIT</a></td>
+                            <td data-label="Date">Aug 15, 2025</td>
+                            <td data-label="Location">Rochester, USA</td>
+                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Esports Summit</a><br><em>"Using AI and Positive Psychology to Transform Harmful Behaviours in Online Gaming Communities"</em></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Digital Well-Being and Gaming Symposium<br><em>AI for Emotional Intelligence in Gaming</em></td>
-                            <td data-label="Location">RIT Magic Spell Studios (Peaceland Project)</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link"><a href="https://www.rit.edu/magic/" target="_blank">MAGIC</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Conference">XP Game Developers Summit<br><em>Panel: Humanizing AI</em></td>
+                            <td data-label="Date">Jun 13, 2025</td>
                             <td data-label="Location">Toronto, Canada</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><a href="https://xpgamesummit.com" target="_blank">XP Game Summit 2025</a><br><em>"Creating Safer Online Spaces for Youth"</em></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">University of Agder Research Series<br><em>Guest Lecture: Measuring Digital Empathy</em></td>
-                            <td data-label="Location">Norway</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link"><a href="https://www.uia.no/en" target="_blank">UiA</a></td>
+                            <td data-label="Date">May 21–23, 2025</td>
+                            <td data-label="Location">Grimstad, Norway</td>
+                            <td data-label="Title"><a href="https://www.uia.no/en" target="_blank">The Academic Esports Seminar at UiA Grimstad</a></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Conference "Wiele języków – jedna tożsamość"<br><em>Lecture: Dwujęzyczność</em></td>
-                            <td data-label="Location">Montreal, Canada</td>
-                            <td data-label="Date">2025</td>
-                            <td data-label="Link">—</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Selected Past Engagements -->
-            <h3 style="text-align: center; color: var(--violet-light); font-size: 1.8rem; margin: 3rem 0 1.5rem;">
-                Selected Past Engagements
-            </h3>
-            
-            <div class="table-container">
-                <table class="speaking-table">
-                    <thead>
-                        <tr>
-                            <th>Conference / Event</th>
-                            <th>Location</th>
-                            <th>Date</th>
-                            <th>Link</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Conference">Toronto Catholic District School Board<br><em>Workshop: Mental Health in the Classroom</em></td>
+                            <td data-label="Date">Feb 14, 2020</td>
                             <td data-label="Location">Toronto, Canada</td>
-                            <td data-label="Date">Feb 2020</td>
-                            <td data-label="Link"><a href="https://www.tcdsb.org/" target="_blank">TCDSB</a></td>
+                            <td data-label="Title">TCDSB Leaders of Your Own Learning (LOYOL)<br><em>"Mental Health in the Classroom"</em></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Collision Conference<br><em>Panel: Empowering Women and Wellness in the Workplace</em></td>
+                            <td data-label="Date">May 22, 2019</td>
                             <td data-label="Location">Toronto, Canada</td>
-                            <td data-label="Date">May 2019</td>
-                            <td data-label="Link"><a href="https://collisionconf.com/" target="_blank">Collision</a></td>
+                            <td data-label="Title"><a href="https://collisionconf.com" target="_blank">Empowering Women and Wellness in the Workplace – Collision Conference</a></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">LD@School 6th Annual Educators' Institute<br><em>Workshop: Motivating Students with Learning Disabilities</em></td>
-                            <td data-label="Location">Canada</td>
-                            <td data-label="Date">Aug 2019</td>
-                            <td data-label="Link"><a href="https://www.ldatschool.ca/" target="_blank">LD@School</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Conference">Learning Disabilities Peel Region<br><em>Talk: Psycho-Educational Assessments</em></td>
+                            <td data-label="Date">Mar 26, 2019</td>
                             <td data-label="Location">Mississauga, Canada</td>
-                            <td data-label="Date">Mar 2019</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><em>All You Need to Know About Psycho-Educational Assessments</em><br>Learning Disabilities Peel Region (LDPR)</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">LD@School 5th Annual Educators' Institute<br><em>Session: IDEAL ME – Leadership Attitudes</em></td>
-                            <td data-label="Location">Toronto, Canada</td>
-                            <td data-label="Date">Aug 2018</td>
-                            <td data-label="Link"><a href="https://www.ldatschool.ca/" target="_blank">LD@School</a></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Conference">National Mining University<br><em>Lecture: Management in Multicultural Society (videoconference)</em></td>
-                            <td data-label="Location">Dnipropetrovsk, Ukraine</td>
-                            <td data-label="Date">Jun 2018</td>
-                            <td data-label="Link">—</td>
-                        </tr>
-                        <tr>
-                            <td data-label="Conference">Rotary Club of Mississauga<br><em>Talk Series: Working Memory Strategies</em></td>
+                            <td data-label="Date">Aug 20, 2019</td>
                             <td data-label="Location">Mississauga, Canada</td>
-                            <td data-label="Date">2016</td>
-                            <td data-label="Link"><a href="https://portal.clubrunner.ca/113" target="_blank">Rotary</a></td>
+                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>Ways to Motivate and Engage Students with a Learning Disability</em><br>LD@school's 6th Annual Educators' Institute</a></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Polish Teachers Federation<br><em>Workshop: Enhancing Children's Interest in Learning</em></td>
+                            <td data-label="Date">Aug 22, 2018</td>
+                            <td data-label="Location">Toronto, Canada</td>
+                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>IDEAL ME: Confident, Assertive, In Charge – Developing the Attitudes of Leadership</em><br>LD@school's 5th Annual Educators' Institute</a></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">Jun 21, 2018</td>
+                            <td data-label="Location">Dnipropetrovsk, Ukraine (videoconference)</td>
+                            <td data-label="Title"><em>Management and Leadership in the Multicultural Society</em><br>Guest Speaker, National Mining University</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">Nov 10, 2016</td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Title"><em>Preserving Our Working Memory</em><br>Rotary Club Presentation</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">Nov 3, 2016</td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Title"><em>Working Memory</em><br>Rotary Club Presentation</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">Jan 2015</td>
                             <td data-label="Location">Montreal, Canada</td>
-                            <td data-label="Date">2015</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Polish Teachers Federation<br><em>Lecture: Enhancing Children's Interest in Learning</em></td>
+                            <td data-label="Date">Sep 2014</td>
                             <td data-label="Location">Burlington, Canada</td>
-                            <td data-label="Date">2014</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Mississauga Community Centre<br><em>Workshop: Changing Negative Attitudes in Children and Youth</em></td>
-                            <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Date">Jun 2014</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Mississauga, Canada</td>
+                            <td data-label="Title"><em>Changing Negative Attitudes in Children and Youths</em></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">National Academy of Neuropsychology<br><em>Poster: Social Intelligence Test-R</em></td>
-                            <td data-label="Location">San Diego, USA</td>
                             <td data-label="Date">Oct 2006</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">San Diego, USA</td>
+                            <td data-label="Title"><a href="https://nanonline.org" target="_blank"><em>Social Intelligence Test-R as a Neuropsychological Instrument</em><br>Poster, National Academy of Neuropsychology Conference</a></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">14th General Meeting<br><em>Paper: Why Stories Make Us More Helpful</em></td>
-                            <td data-label="Location">Würzburg, Germany</td>
                             <td data-label="Date">Jun 2005</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Würzburg, Germany</td>
+                            <td data-label="Title"><em>Why Stories Make Us More Helpful</em><br>14th General Meeting</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Conference on Intergroup Relations<br><em>Paper: Personal History and Stereotype</em></td>
-                            <td data-label="Location">Mądralin, Poland</td>
                             <td data-label="Date">Jun 2004</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Mądralin, Poland</td>
+                            <td data-label="Title"><em>Personal History and Stereotype as Two Contexts of Person Cognition</em><br>Conference on Psychological Context in Intergroup Relations (Dr. M. Kofta)</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">ESCON Conference<br><em>Paper: Narrative Mode Influence on Person Impression</em></td>
+                            <td data-label="Date">Sep 2003</td>
                             <td data-label="Location">Padova, Italy</td>
-                            <td data-label="Date">Sep 2003</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><a href="https://www.escon-society.eu" target="_blank"><em>Narrative Mode Influence on Person Impression</em><br>ESCON Conference</a></td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Polish Conference of Narrative Psychology<br><em>Presentation: Narrative Mode Influence</em></td>
+                            <td data-label="Date">Sep 2003</td>
                             <td data-label="Location">St. Kathrin, Poland</td>
-                            <td data-label="Date">Sep 2003</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Title"><em>Narrative Mode Influence on Person Impression</em><br>III Polish Conference of Narrative Psychology (Dr. P. Oleś)</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Warsaw Workshop on Social Cognition<br><em>Paper: Fear Appeal in PSA</em></td>
+                            <td data-label="Date">Feb 2003</td>
                             <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>Workshops on Social Advertising</em></td>
+                        </tr>
+                        <tr>
                             <td data-label="Date">Jun 2001</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Warsaw Workshop on Social Psychology</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">Crackfilm Festival<br><em>Lecture: Fear Appeal in Public Service Campaigns</em></td>
-                            <td data-label="Location">Kraków, Poland</td>
                             <td data-label="Date">May 2001</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Kraków, Poland</td>
+                            <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Crackfilm Festival</td>
                         </tr>
                         <tr>
-                            <td data-label="Conference">International Conference: The Role of Media in Communication<br><em>Presentation: Social Advertising in Poland</em></td>
+                            <td data-label="Date">Jan 2001</td>
                             <td data-label="Location">Wrocław, Poland</td>
+                            <td data-label="Title"><em>Changing Attitudes: "New Millennium – I Do Not Smoke Because I Like It." Social Marketing as a Weapon Against Smoking</em></td>
+                        </tr>
+                        <tr>
                             <td data-label="Date">Jun 2000</td>
-                            <td data-label="Link">—</td>
+                            <td data-label="Location">Wrocław, Poland</td>
+                            <td data-label="Title"><em>Social Advertising in Poland</em><br>International Conference: The Role of Media in the Process of Communication</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">2000</td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>Role of Persuasive Psychology in Commercial Advertising</em><br>(Supervisor: Dr. A. Grochowska)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">1999</td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>Narcissistic Disorders of Personality</em><br>(Supervisor: Dr. E. Trzebińska)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">1998</td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>A Not-B Effect</em><br>(Supervisor: Dr. K. Konarzewski)</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Date">1998</td>
+                            <td data-label="Location">Warsaw, Poland</td>
+                            <td data-label="Title"><em>Sport Fans and Violent Behaviours</em><br>(Supervisor: Dr. A. Frączek)</td>
                         </tr>
                     </tbody>
                 </table>
@@ -933,10 +1142,10 @@
                 <p>
                     Keynotes • Workshops • Panels • Corporate Training • Virtual Presentations
                 </p>
-                <a href="#contact" class="btn btn-primary" style="background: white; color: var(--violet-dark); box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);">
+                <a href="#contact" class="btn btn-primary">
                     Get in Touch
                 </a>
-                <a href="mailto:ewa@felixagaming.com" class="btn btn-outline" style="border-color: white; color: white;">
+                <a href="mailto:ewa@felixagaming.com" class="btn btn-outline">
                     Email Directly
                 </a>
             </div>
