@@ -679,8 +679,7 @@
         }
 
         .speaking-table thead {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(192, 132, 252, 0.1));
-            border-bottom: 2px solid var(--primary);
+            display: none;
         }
 
         .speaking-table th {
@@ -890,6 +889,94 @@
             z-index: 1;
         }
 
+        /* Research Table Specific Styles */
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: rgba(18, 18, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .research-table thead {
+            display: none;
+        }
+
+        .research-table th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+        }
+
+        .research-table td {
+            padding: 1rem;
+            color: var(--gray-300);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            vertical-align: top;
+        }
+
+        .research-table tbody tr {
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .research-table tbody tr::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+            transform: scaleY(0);
+            transition: transform 0.3s;
+        }
+
+        .research-table tbody tr:hover::before {
+            transform: scaleY(1);
+        }
+
+        .research-table tbody tr:hover {
+            background: rgba(139, 92, 246, 0.05);
+            box-shadow: inset 0 0 20px rgba(139, 92, 246, 0.1);
+        }
+
+        .research-table a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .research-table a:hover {
+            color: var(--primary-light);
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .research-table tbody tr.hidden-row {
+            display: none;
+        }
+
+        .project-title {
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .project-note {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
+
         footer {
             background: var(--black);
             border-top: 2px solid rgba(139, 92, 246, 0.2);
@@ -926,35 +1013,41 @@
                 grid-template-columns: 1fr;
             }
 
-            .speaking-table {
+            .speaking-table, .research-table {
                 font-size: 0.9rem;
             }
 
             .speaking-table th,
-            .speaking-table td {
+            .speaking-table td,
+            .research-table th,
+            .research-table td {
                 padding: 0.75rem 0.5rem;
             }
 
             /* Stack table cells vertically on mobile */
-            .speaking-table thead {
+            .speaking-table thead,
+            .research-table thead {
                 display: none;
             }
 
-            .speaking-table tbody tr {
+            .speaking-table tbody tr,
+            .research-table tbody tr {
                 display: block;
                 margin-bottom: 1.5rem;
                 border: 1px solid rgba(139, 92, 246, 0.2);
                 border-radius: 8px;
             }
 
-            .speaking-table tbody td {
+            .speaking-table tbody td,
+            .research-table tbody td {
                 display: block;
                 text-align: left;
                 padding: 0.75rem;
                 border: none;
             }
 
-            .speaking-table tbody td:before {
+            .speaking-table tbody td:before,
+            .research-table tbody td:before {
                 content: attr(data-label);
                 font-weight: 600;
                 color: var(--primary);
@@ -971,6 +1064,7 @@
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#speaking" class="nav-link">Speaking</a></li>
+                <li><a href="#research" class="nav-link">Research</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -1111,13 +1205,6 @@
             
             <div class="table-container">
                 <table class="speaking-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Location</th>
-                            <th>Title / Event</th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td data-label="Date">Aug 15, 2025</td>
@@ -1288,6 +1375,156 @@
         </div>
     </section>
 
+    <section class="section" id="research">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Research Collaboration</span>
+                <h2 class="section-title">Advancing <span class="gradient-text">Science</span> & Innovation</h2>
+            </div>
+
+            <div class="speaking-intro">
+                <p>
+                    25+ years of pioneering research at the intersection of behavioral science, psychology, and technology. 
+                    From narrative psychology to AI-driven behavioral transformation, each project contributes to creating 
+                    safer, more empathetic digital communities.
+                </p>
+            </div>
+
+            <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                Research Projects
+            </h3>
+            
+            <div class="table-container">
+                <table class="research-table">
+                    <tbody>
+                        <tr>
+                            <td data-label="Year">2025</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">AI–Human Alignment in Evaluating Online Behavior</div>
+                                <div class="project-note">(Poster Finalist – Ontario Psychological Association 2025)</div>
+                            </td>
+                            <td data-label="Description">Empirical validation comparing AI-generated and human ratings of emotional and behavioral attributes across multiple platforms.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">2025</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Transforming Digital Human Interaction: The Felixa Psychological Foundations</div>
+                            </td>
+                            <td data-label="Description">Conceptual manifesto defining the psychological, philosophical, and behavioral framework behind Felixa; bridges psychology, ethics, and AI.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">2025</td>
+                            <td data-label="Project Title">
+                                <div class="project-title"><a href="https://osf.io/preprints/psyarxiv/utypx_v1?utm_source=chatgpt.com" target="_blank">The Psychology and Technology Behind Safer Gaming Communities</a></div>
+                            </td>
+                            <td data-label="Description">Published study integrating psychology and AI for safer gaming environments; presented at Serious Play & XP Game Summit.</td>
+                        </tr>
+                        <tr>
+                            <td data-label="Year">2024</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Behavioral and Semantic Markers as Predictive Tools</div>
+                            </td>
+                            <td data-label="Description">Development of AI-driven linguistic and behavioral indicators that predict and transform toxic interaction patterns in gaming and streaming ecosystems.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2023</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Internet and Digital Media Usage and Its Impact on Mental Well-Being</div>
+                            </td>
+                            <td data-label="Description">Examined behavioral, emotional, and motivational effects of prolonged digital exposure; foundation for Felixa's digital-behavior framework.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2021 – Present</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Felixa Health – AI for Safer Digital Communities</div>
+                            </td>
+                            <td data-label="Description">Behavioral analytics platform merging psychology and AI to detect, interpret, and transform toxic online behaviors.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2018 – 2021</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Talk2Alex</div>
+                            </td>
+                            <td data-label="Description">AI-supported emotional-coaching and self-regulation app; precursor to Felixa's behavioral feedback loop.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2010 – 2020</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">IdealMe Program</div>
+                            </td>
+                            <td data-label="Description">Psychoeducational framework integrating emotional regulation, motivation, and cognitive restructuring for children and youth.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2004 – 2006</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Social Intelligence: Test-R as a Neuropsychological Instrument</div>
+                                <div class="project-note">(Celinski & Associates)</div>
+                            </td>
+                            <td data-label="Description">Validated instrument assessing social cognition, emotional insight, and interpersonal problem-solving.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2004 – 2006</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Stress Lessons – Psychology Foundation of Canada</div>
+                            </td>
+                            <td data-label="Description">Supported creation and evaluation of a curriculum teaching emotional regulation and coping strategies to educators and students.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2001 – 2005</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Narrative Mode Influences Mindset in Understanding Others</div>
+                                <div class="project-note">(SWPS University)</div>
+                            </td>
+                            <td data-label="Description">Demonstrated that narrative-based processing enhances empathy and reduces stereotyping in person perception.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2001 – 2005</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Narrative Mode in Person Cognition</div>
+                                <div class="project-note">(SWPS University)</div>
+                            </td>
+                            <td data-label="Description">Explored how narrative framing shapes perception of others' intentions and moral judgments.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2001 – 2005</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Narrations in Schizophrenia</div>
+                                <div class="project-note">(SWPS University)</div>
+                            </td>
+                            <td data-label="Description">Analyzed differences in narrative coherence between psychotic and non-psychotic thought processes.</td>
+                        </tr>
+                        <tr class="hidden-row">
+                            <td data-label="Year">2001 – 2002</td>
+                            <td data-label="Project Title">
+                                <div class="project-title">Influencing Conscious and Unconscious Attitudes and Physiological Arousal Toward Smoking Through Public Service Announcements</div>
+                                <div class="project-note">(Maison & Antczak, University of Warsaw)</div>
+                            </td>
+                            <td data-label="Description">Measured heart rate, skin conductance, and attitude change in response to emotional PSA campaigns—early research in persuasive health communication.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="show-more-btn" id="showMoreResearchBtn" onclick="toggleResearchRows()">
+                Show More ▼
+            </button>
+
+            <!-- Call to Action -->
+            <div class="cta-box" style="margin-top: 3rem;">
+                <h3>Interested in Research Collaboration?</h3>
+                <p>
+                    Let's explore opportunities to advance behavioral science, AI ethics, and digital well-being together.
+                </p>
+                <a href="#contact" class="btn btn-primary">
+                    Get in Touch
+                </a>
+                <a href="mailto:ewa@felixagaming.com" class="btn btn-outline">
+                    Email Directly
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="section" id="contact">
         <div class="container">
             <div class="section-header">
@@ -1389,9 +1626,50 @@
             }
         }
 
+        // Research table show more/less functionality
+        function initializeResearchTable() {
+            const tableRows = document.querySelectorAll('.research-table tbody tr');
+            // Hide all rows after the 4th one (index 3)
+            tableRows.forEach((row, index) => {
+                if (index > 3) {
+                    row.classList.add('hidden-row');
+                }
+            });
+        }
+
+        function toggleResearchRows() {
+            const tableRows = document.querySelectorAll('.research-table tbody tr');
+            const btn = document.getElementById('showMoreResearchBtn');
+            const hiddenRows = document.querySelectorAll('.research-table tbody tr.hidden-row');
+            
+            if (hiddenRows.length > 0) {
+                // Show all rows
+                tableRows.forEach(row => {
+                    row.classList.remove('hidden-row');
+                });
+                btn.innerHTML = 'Show Less ▲';
+            } else {
+                // Hide rows after the 4th one
+                tableRows.forEach((row, index) => {
+                    if (index > 3) {
+                        row.classList.add('hidden-row');
+                    }
+                });
+                btn.innerHTML = 'Show More ▼';
+                // Smooth scroll to the research section
+                setTimeout(() => {
+                    document.querySelector('.research-table').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 100);
+            }
+        }
+
         // Initialize on page load
         window.addEventListener('DOMContentLoaded', function() {
             initializeSpeakingTable();
+            initializeResearchTable();
         });
     </script>
 </body>
