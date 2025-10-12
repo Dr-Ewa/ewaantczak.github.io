@@ -765,6 +765,59 @@
             margin: 2rem 0;
         }
 
+        /* Collapsible Table */
+        .speaking-table tbody tr.hidden-row {
+            display: none;
+        }
+
+        .show-more-container {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .show-more-btn {
+            display: inline-block;
+            padding: 0.875rem 2.5rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .show-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .show-more-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .show-more-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .show-more-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
         .cta-box {
             background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(192, 132, 252, 0.1));
             backdrop-filter: blur(20px);
@@ -1061,127 +1114,127 @@
                             <td data-label="Location">Grimstad, Norway</td>
                             <td data-label="Title"><a href="https://www.uia.no/en" target="_blank">The Academic Esports Seminar at UiA Grimstad</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Feb 14, 2020</td>
                             <td data-label="Location">Toronto, Canada</td>
                             <td data-label="Title">TCDSB Leaders of Your Own Learning (LOYOL)<br><em>"Mental Health in the Classroom"</em></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">May 22, 2019</td>
                             <td data-label="Location">Toronto, Canada</td>
                             <td data-label="Title"><a href="https://collisionconf.com" target="_blank">Empowering Women and Wellness in the Workplace – Collision Conference</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Mar 26, 2019</td>
                             <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Title"><em>All You Need to Know About Psycho-Educational Assessments</em><br>Learning Disabilities Peel Region (LDPR)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Aug 20, 2019</td>
                             <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>Ways to Motivate and Engage Students with a Learning Disability</em><br>LD@school's 6th Annual Educators' Institute</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Aug 22, 2018</td>
                             <td data-label="Location">Toronto, Canada</td>
                             <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>IDEAL ME: Confident, Assertive, In Charge – Developing the Attitudes of Leadership</em><br>LD@school's 5th Annual Educators' Institute</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 21, 2018</td>
                             <td data-label="Location">Dnipropetrovsk, Ukraine (videoconference)</td>
                             <td data-label="Title"><em>Management and Leadership in the Multicultural Society</em><br>Guest Speaker, National Mining University</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Nov 10, 2016</td>
                             <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Title"><em>Preserving Our Working Memory</em><br>Rotary Club Presentation</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Nov 3, 2016</td>
                             <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Title"><em>Working Memory</em><br>Rotary Club Presentation</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jan 2015</td>
                             <td data-label="Location">Montreal, Canada</td>
                             <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Sep 2014</td>
                             <td data-label="Location">Burlington, Canada</td>
                             <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 2014</td>
                             <td data-label="Location">Mississauga, Canada</td>
                             <td data-label="Title"><em>Changing Negative Attitudes in Children and Youths</em></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Oct 2006</td>
                             <td data-label="Location">San Diego, USA</td>
                             <td data-label="Title"><a href="https://nanonline.org" target="_blank"><em>Social Intelligence Test-R as a Neuropsychological Instrument</em><br>Poster, National Academy of Neuropsychology Conference</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 2005</td>
                             <td data-label="Location">Würzburg, Germany</td>
                             <td data-label="Title"><em>Why Stories Make Us More Helpful</em><br>14th General Meeting</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 2004</td>
                             <td data-label="Location">Mądralin, Poland</td>
                             <td data-label="Title"><em>Personal History and Stereotype as Two Contexts of Person Cognition</em><br>Conference on Psychological Context in Intergroup Relations (Dr. M. Kofta)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Sep 2003</td>
                             <td data-label="Location">Padova, Italy</td>
                             <td data-label="Title"><a href="https://www.escon-society.eu" target="_blank"><em>Narrative Mode Influence on Person Impression</em><br>ESCON Conference</a></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Sep 2003</td>
                             <td data-label="Location">St. Kathrin, Poland</td>
                             <td data-label="Title"><em>Narrative Mode Influence on Person Impression</em><br>III Polish Conference of Narrative Psychology (Dr. P. Oleś)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Feb 2003</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>Workshops on Social Advertising</em></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 2001</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Warsaw Workshop on Social Psychology</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">May 2001</td>
                             <td data-label="Location">Kraków, Poland</td>
                             <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Crackfilm Festival</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jan 2001</td>
                             <td data-label="Location">Wrocław, Poland</td>
                             <td data-label="Title"><em>Changing Attitudes: "New Millennium – I Do Not Smoke Because I Like It." Social Marketing as a Weapon Against Smoking</em></td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">Jun 2000</td>
                             <td data-label="Location">Wrocław, Poland</td>
                             <td data-label="Title"><em>Social Advertising in Poland</em><br>International Conference: The Role of Media in the Process of Communication</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">2000</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>Role of Persuasive Psychology in Commercial Advertising</em><br>(Supervisor: Dr. A. Grochowska)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">1999</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>Narcissistic Disorders of Personality</em><br>(Supervisor: Dr. E. Trzebińska)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">1998</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>A Not-B Effect</em><br>(Supervisor: Dr. K. Konarzewski)</td>
                         </tr>
-                        <tr>
+                        <tr class="hidden-row">
                             <td data-label="Date">1998</td>
                             <td data-label="Location">Warsaw, Poland</td>
                             <td data-label="Title"><em>Sport Fans and Violent Behaviours</em><br>(Supervisor: Dr. A. Frączek)</td>
