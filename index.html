@@ -705,6 +705,61 @@
             text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
         }
 
+        /* Collapsible table rows */
+        .speaking-table tbody tr.hidden-row {
+            display: none;
+            animation: fadeOut 0.3s ease-out;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .show-more-btn {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.875rem 2.5rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 2px solid var(--primary);
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .show-more-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 30px rgba(139, 92, 246, 0.4);
+        }
+
+        .show-more-btn:active {
+            transform: translateY(0);
+        }
+
         .table-container {
             overflow-x: auto;
             margin: 2rem 0;
@@ -1135,6 +1190,10 @@
                 </table>
             </div>
 
+            <button class="show-more-btn" id="showMoreBtn" onclick="toggleSpeakingRows()">
+                Show More ▼
+            </button>
+
             <!-- Call to Action -->
             <div class="cta-box" style="margin-top: 3rem;">
                 <h3>Ready to Book Dr. Ewa for Your Event?</h3>
@@ -1202,6 +1261,51 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+
+        // Speaking table show more/less functionality
+        function initializeSpeakingTable() {
+            const tableRows = document.querySelectorAll('.speaking-table tbody tr');
+            // Hide all rows after the 4th one (index 3)
+            tableRows.forEach((row, index) => {
+                if (index > 3) {
+                    row.classList.add('hidden-row');
+                }
+            });
+        }
+
+        function toggleSpeakingRows() {
+            const tableRows = document.querySelectorAll('.speaking-table tbody tr');
+            const btn = document.getElementById('showMoreBtn');
+            const hiddenRows = document.querySelectorAll('.speaking-table tbody tr.hidden-row');
+            
+            if (hiddenRows.length > 0) {
+                // Show all rows
+                tableRows.forEach(row => {
+                    row.classList.remove('hidden-row');
+                });
+                btn.innerHTML = 'Show Less ▲';
+            } else {
+                // Hide rows after the 4th one
+                tableRows.forEach((row, index) => {
+                    if (index > 3) {
+                        row.classList.add('hidden-row');
+                    }
+                });
+                btn.innerHTML = 'Show More ▼';
+                // Smooth scroll to the speaking section
+                setTimeout(() => {
+                    document.querySelector('.speaking-table').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'nearest' 
+                    });
+                }, 100);
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeSpeakingTable();
         });
     </script>
 </body>
