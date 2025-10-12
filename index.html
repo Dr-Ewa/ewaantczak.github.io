@@ -1,1 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dr. Ewa J. Antczak - Behavioral Scientist, Registered School Psychologist, Researcher in Positive Attitude Formation, Online Safety, and Ethical AI">
+    <meta property="og:title" content="Dr. Ewa J. Antczak | Behavioral Scientist">
+    <meta property="og:description" content="Transforming digital behavior through psychology and AI. 20+ years of research, 15,000+ lives impacted.">
+    <title>Dr. Ewa J. Antczak | Behavioral Scientist & Digital Safety Expert</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --black-light: #1a1a1a;
+            --violet: #8b5cf6;
+            --violet-dark: #6d28d9;
+            --violet-light: #a78bfa;
+            --blue: #3b82f6;
+            --blue-dark: #1e40af;
+            --blue-light: #60a5fa;
+            --orange: #fb923c;
+            --orange-dark: #ea580c;
+            --white: #ffffff;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --max-width: 1200px;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--violet), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--violet-light);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--violet);
+            filter: blur(150px);
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--blue);
+            filter: blur(150px);
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            color: var(--violet-light);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            margin: 1.5rem auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--violet);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .professional-title {
+            color: var(--violet-light);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--violet), var(--blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            color: var(--gray-400);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            margin: 0.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--violet), var(--blue));
+            color: white;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(139, 92, 246, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: var(--violet);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--orange), var(--violet));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--black);
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Dr. Ewa J. Antczak</div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">Ph.D., C.Psych.</div>
+            
+            <h1>Dr. Ewa J. Antczak</h1>
+            
+            <div class="profile-image">
+                <img src="Dr_Ewa_Photo.png" alt="Dr. Ewa J. Antczak">
+            </div>
+            
+            <p class="professional-title">
+                Behavioral Scientist | Registered School Psychologist | Researcher | Author | Speaker
+            </p>
+            
+            <h2>
+                Transforming <span class="gradient-text">Digital Behavior</span><br>
+                Through Psychology & AI
+            </h2>
+            
+            <p class="hero-subtitle">
+                20 years of research. 15,000+ lives impacted.<br>
+                Pioneering ethical AI for safer online spaces.
+            </p>
+            
+            <div>
+                <a href="mailto:ewa@felixagaming.com" class="btn btn-primary">Get in Touch</a>
+                <a href="https://felixagaming.com" target="_blank" class="btn btn-outline">Learn More</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Years Research</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Youth Helped</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Publications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Global</div>
+                    <div class="stat-label">Speaking Reach</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Transforming <span class="gradient-text">Digital Communities</span></h2>
+                <p style="color: var(--gray-400); max-width: 600px; margin: 0 auto;">
+                    Founder & CEO of Felixa Health, pioneering AI-driven solutions for safer online spaces. 
+                    Former school psychologist who served 15,000+ students. Research achieving 80% AI-human concordance in behavioral assessment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p style="color: var(--gray-500); margin-bottom: 0.5rem;">
+            © 2024 Dr. Ewa J. Antczak. All rights reserved.
+        </p>
+        <p style="color: var(--gray-500); font-size: 0.875rem;">
+            Ph.D., C.Psych. | Member: OPA, CPA, APA
+        </p>
+    </footer>
+</body>
+</html>
