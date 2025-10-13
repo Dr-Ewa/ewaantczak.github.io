@@ -1072,6 +1072,104 @@
             box-shadow: 0 0 10px var(--primary);
         }
 
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--black-light), var(--black-lighter));
+            margin: 3% auto;
+            padding: 0;
+            border: 2px solid var(--primary);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 60px rgba(139, 92, 246, 0.5);
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(192, 132, 252, 0.1));
+            padding: 2rem;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-header h2 {
+            color: var(--white);
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            color: var(--gray-300);
+            line-height: 1.8;
+        }
+
+        .modal-body h3 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body li {
+            margin-bottom: 0.5rem;
+        }
+
+        .close {
+            color: var(--gray-400);
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 2;
+        }
+
+        .close:hover {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+            transform: scale(1.2);
+        }
+
+        .clickable-title {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .clickable-title:hover {
+            color: var(--primary-light);
+            text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+        }
+
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -1292,7 +1390,7 @@
                         <tr>
                             <td data-label="Date">Aug 15, 2025</td>
                             <td data-label="Location">Rochester, USA</td>
-                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Conference at the University of Rochester</a><br><em>"The Psychology and Technology Behind Safer Gaming"</em></td>
+                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Conference at the University of Rochester</a><br><em class="clickable-title" onclick="openTalkModal()">"The Psychology and Technology Behind Safer Gaming"</em></td>
                         </tr>
                         <tr>
                             <td data-label="Date">Aug 15, 2025</td>
@@ -1867,6 +1965,68 @@
             initializeResearchTable();
             initializePublicationsTable();
         });
+
+        // Modal functions for talk description
+        function openTalkModal() {
+            document.getElementById('talkModal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeTalkModal() {
+            document.getElementById('talkModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal when clicking outside of it
+        function closeModalOnBackdrop(event) {
+            const modal = document.getElementById('talkModal');
+            if (event.target === modal) {
+                closeTalkModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTalkModal();
+            }
+        });
     </script>
+
+    <!-- Talk Description Modal -->
+    <div id="talkModal" class="modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeTalkModal()">&times;</span>
+                <h2>The Psychology and Technology Behind Safer Gaming</h2>
+            </div>
+            <div class="modal-body">
+                <p>We are living in a transformative era where emerging technologies and online platforms have redefined how people connect, collaborate, and play. While these spaces offer valuable opportunities for creativity and community, they also expose users to harmful behaviors including aggression, hate speech, exclusion, and harassment. Ensuring psychological safety within digital environments has become a pressing societal concern.</p>
+
+                <p>This session is for anyone shaping digital culture—from gaming and social media to DIY communities—as well as policymakers, educators, gamers, and parents. Together we will explore how behavioral science and AI can reduce toxicity and build stronger trust and safety online. When we protect digital trust, we not only support mental health but also preserve the freedom to play, collaborate, and create without fear of harassment or silencing.</p>
+
+                <p>Drawing on recent validation studies and global data, I will use <strong>live examples and demos</strong> to show how psychological factors (empathy deficits, emotional intelligence, dark triad traits) and environmental drivers (anonymity, toxic modeling, game reward systems) fuel harmful behaviors, and how community health assessments combined with proactive real-time AI interventions can create lasting change.</p>
+
+                <h3>Why This Matters</h3>
+                <p>Almost one in five players experience harassment, and more than two-thirds avoid communities they consider toxic. This results in anxiety, depression, reduced enjoyment for players, and billions in lost revenue for studios. Traditional reactive approaches—bans, reports, moderation—are often too late, too punitive, and lack consistent health metrics.</p>
+
+                <h3>The AI-Powered Solution</h3>
+                <p>Our team of behavioral scientists and AI experts developed an AI-powered behavioral analytics system that integrates machine learning with principles from behavioral psychology. Validation research shows this AI-powered tool aligns with human judgment across multiple languages, scales to all 24 official EU languages, and costs 50% less than traditional moderation tools.</p>
+
+                <h3>What You'll Learn</h3>
+                <ul>
+                    <li><strong>Apply research-based strategies</strong> to design safer, more inclusive digital environments that support well-being and strengthen civic participation</li>
+                    <li><strong>Access AI-driven tools</strong> that evaluate community health and provide compliance reports within minutes</li>
+                    <li><strong>Understand how toxic behaviors</strong> spill over into civic spaces, reducing public trust and discouraging meaningful engagement</li>
+                    <li><strong>Move beyond punishment</strong> to proactive, science-driven strategies that prevent escalation and encourage positive behavior at scale</li>
+                </ul>
+
+                <p>Reducing toxicity not only protects mental health and ensures compliance (Digital Services Act, Online Safety Act, COPPA) but also drives measurable business outcomes: improved retention, increased player spending, stronger brand reputation, and reduced churn.</p>
+
+                <p>Attendees will leave with actionable insights and a clear roadmap showing how investing in community health creates both healthier players and healthier bottom lines.</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
