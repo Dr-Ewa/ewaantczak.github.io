@@ -1,36 +1,957 @@
-diff --git a/README.md b/README.md
-index 070bdaab1305aa566b05993f58722153d33ed21b..e76a6544ebef042ea00eb2ab1355f878539492c9 100644
---- a/README.md
-+++ b/README.md
-@@ -1 +1,29 @@
--# ewaantczak.github.io
-\ No newline at end of file
-+# ewaantczak.github.io
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 2079a10e14a40930f7724b470e62359411a209d9..222529f00e0cfbf4a1cd466cdcef30297824e3b1 100644
+--- a/index.html
++++ b/index.html
+@@ -536,57 +536,71 @@
+         }
+ 
+         .topic-card::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             left: -100%;
+             width: 100%;
+             height: 100%;
+             background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+             transition: left 0.5s;
+         }
+ 
+         .topic-card:hover::before {
+             left: 100%;
+         }
+ 
+         .topic-card:hover {
+             background: rgba(18, 18, 26, 0.95);
+             border-color: var(--primary);
+             transform: translateY(-5px);
+             box-shadow: 0 10px 40px rgba(139, 92, 246, 0.3),
+                         inset 0 0 20px rgba(139, 92, 246, 0.05);
+         }
+ 
+-        .topic-card h3 {
++        .topic-button {
++            background: none;
++            border: none;
+             color: var(--white);
+             font-size: 1.15rem;
+-            margin-bottom: 0;
++            font-weight: 600;
+             line-height: 1.5;
++            margin: 0;
++            padding: 0;
+             position: relative;
+             z-index: 1;
++            width: 100%;
++            cursor: pointer;
++            transition: color 0.3s ease, text-shadow 0.3s ease;
++        }
 +
-+This repository contains the source for Dr. Ewa J. Antczak's personal website. The site is a static HTML page, so deploying updates is as simple as pushing the latest version to GitHub.
++        .topic-button:focus-visible,
++        .topic-button:hover {
++            color: var(--primary-light);
++            text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
++            outline: none;
+         }
+ 
+         .engagement-showcase {
+             margin: 3rem 0;
+         }
+ 
+         .engagement-item {
+             background: rgba(18, 18, 26, 0.6);
+             backdrop-filter: blur(10px);
+             border-left: 4px solid var(--primary);
+             padding: 1.5rem 2rem;
+             margin-bottom: 1.5rem;
+             border-radius: 8px;
+             transition: all 0.3s;
+             border: 1px solid rgba(139, 92, 246, 0.2);
+             border-left-width: 4px;
+         }
+ 
+         .engagement-item:hover {
+             background: rgba(18, 18, 26, 0.9);
+             transform: translateX(5px);
+             box-shadow: 0 5px 30px rgba(139, 92, 246, 0.2);
+             border-color: var(--primary);
+         }
+ 
+@@ -1121,75 +1135,69 @@
+             color: var(--gray-300);
+             line-height: 1.8;
+         }
+ 
+         .modal-body h3 {
+             color: var(--primary);
+             margin-top: 2rem;
+             margin-bottom: 1rem;
+             font-size: 1.3rem;
+         }
+ 
+         .modal-body p {
+             margin-bottom: 1.5rem;
+         }
+ 
+         .modal-body ul {
+             margin-left: 1.5rem;
+             margin-bottom: 1.5rem;
+         }
+ 
+         .modal-body li {
+             margin-bottom: 0.5rem;
+         }
+ 
+         .close {
++            background: none;
++            border: none;
++            cursor: pointer;
+             color: var(--gray-400);
+             position: absolute;
+             top: 1.5rem;
+             right: 2rem;
+             font-size: 2rem;
+             font-weight: bold;
+-            cursor: pointer;
+             transition: all 0.3s;
+             z-index: 2;
+         }
+ 
+-        .close:hover {
++        .close:hover,
++        .close:focus-visible {
+             color: var(--primary);
+             text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+             transform: scale(1.2);
+-        }
+-
+-        .clickable-title {
+-            cursor: pointer;
+-            transition: all 0.3s;
+-        }
+-
+-        .clickable-title:hover {
+-            color: var(--primary-light);
+-            text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
++            outline: none;
+         }
+ 
+         .modal-legend {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+             gap: 1rem;
+             margin-bottom: 2rem;
+             padding: 1.5rem;
+             background: rgba(139, 92, 246, 0.05);
+             border-radius: 8px;
+             border: 1px solid rgba(139, 92, 246, 0.2);
+         }
+ 
+         .legend-item {
+             display: flex;
+             align-items: center;
+             gap: 0.5rem;
+             font-size: 0.85rem;
+         }
+ 
+         .legend-color {
+             width: 12px;
+             height: 12px;
+             border-radius: 50%;
+             flex-shrink: 0;
+@@ -1311,70 +1319,70 @@
+                 display: block;
+                 margin-bottom: 0.25rem;
+             }
+         }
+     </style>
+ </head>
+ <body>
+     <nav id="navbar">
+         <div class="nav-container" style="justify-content: center;">
+             <ul class="nav-menu">
+                 <li><a href="#home" class="nav-link">Home</a></li>
+                 <li><a href="#about" class="nav-link">About</a></li>
+                 <li><a href="#speaking" class="nav-link">Speaking</a></li>
+                 <li><a href="#research" class="nav-link">Research</a></li>
+                 <li><a href="#publications" class="nav-link">Publications</a></li>
+                 <li><a href="#contact" class="nav-link">Contact</a></li>
+             </ul>
+         </div>
+     </nav>
+ 
+     <section class="hero" id="home">
+         <div class="hero-content">
+             <h1>Dr. Ewa J. Antczak</h1>
+             
+             <div class="profile-image">
+-                <img src="Dr_Ewa_Photo.png">
++                <img src="Dr_Ewa_Photo.png" alt="Portrait of Dr. Ewa J. Antczak">
+             </div>
+             
+             <p class="professional-title">
+                 Behavioral Scientist | Registered School Psychologist | Researcher | Author | Speaker
+             </p>
+             
+             <h2>
+                 Transforming <span class="gradient-text">Digital Behavior</span><br>
+                 Through Psychology & AI
+             </h2>
+             
+             <p class="hero-subtitle">
+                 25 years of research. 15,000+ lives impacted.<br>
+                 Pioneering ethical AI for safer online spaces.
+             </p>
+             
+             <div>
+                 <a href="#contact" class="btn btn-primary">Get in Touch</a>
+-                <a href="https://felixagaming.com" target="_blank" class="btn btn-outline">Felixa</a>
++                <a href="https://felixagaming.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Felixa</a>
+             </div>
+             
+             <div class="hero-stats">
+                 <div class="stat-item">
+                     <div class="stat-number">25+</div>
+                     <div class="stat-label">Years Research</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-number">15K+</div>
+                     <div class="stat-label">Youth Helped</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-number">50+</div>
+                     <div class="stat-label">Publications</div>
+                 </div>
+                 <div class="stat-item">
+                     <div class="stat-number">Global</div>
+                     <div class="stat-label">Speaking Reach</div>
+                 </div>
+             </div>
+         </div>
+     </section>
+ 
+     <section class="section" id="about">
+         <div class="container">
+@@ -1395,191 +1403,191 @@
+             </div>
+         </div>
+     </section>
+ 
+     <section class="section" id="speaking" style="background: var(--black-light);">
+         <div class="container">
+             <div class="section-header">
+                 <span class="section-badge">Speaking & Workshops</span>
+                 <h2 class="section-title">Inspiring <span class="gradient-text">Change</span> Through Insight</h2>
+             </div>
+ 
+             <div class="speaking-intro">
+                 <p>
+                     25 years of research bridging psychology, technology, and human behavior. Keynotes and workshops 
+                     on digital well-being, youth mental health, ethical AI, and gaming toxicity.
+                 </p>
+             </div>
+ 
+             <!-- Speaking Gallery -->
+             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                 Dr. Ewa in Action
+             </h3>
+ 
+             <div class="speaking-gallery">
+                 <div class="gallery-item">
+-                    <a href="https://youtu.be/3N54d9inBXk" target="_blank">
+-                        <img src="IMG_6394.jpeg">
++                    <a href="https://youtu.be/3N54d9inBXk" target="_blank" rel="noopener noreferrer">
++                        <img src="IMG_6394.jpeg" alt="Dr. Ewa presenting on stage" loading="lazy">
+                     </a>
+                 </div>
+                 <div class="gallery-item">
+-                    <a href="https://youtu.be/3N54d9inBXk" target="_blank">
+-                        <img src="speaking-photo-2.jpg">
++                    <a href="https://youtu.be/3N54d9inBXk" target="_blank" rel="noopener noreferrer">
++                        <img src="speaking-photo-2.jpg" alt="Audience listening to Dr. Ewa's keynote" loading="lazy">
+                     </a>
+                 </div>
+                 <div class="gallery-item">
+-                    <a href="https://youtu.be/3N54d9inBXk" target="_blank">
+-                        <img src="IMG_6474.jpeg">
++                    <a href="https://youtu.be/3N54d9inBXk" target="_blank" rel="noopener noreferrer">
++                        <img src="IMG_6474.jpeg" alt="Dr. Ewa speaking at a conference" loading="lazy">
+                     </a>
+                 </div>
+             </div>
+ 
+             <!-- Key Speaking Topics -->
+             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                 Keynote & Invited Speaking Themes
+             </h3>
+ 
+             <div class="topics-grid">
+                 <div class="topic-card">
+-                    <h3 class="clickable-title" onclick="openTalkModal()" style="cursor: pointer;">Using Psychology and Technology to Create Safer Online Spaces</h3>
++                    <button type="button" class="topic-button" data-modal-target="talkModal" aria-haspopup="dialog" aria-controls="talkModal">Using Psychology and Technology to Create Safer Online Spaces</button>
+                 </div>
+ 
+                 <div class="topic-card">
+-                    <h3>Reducing Toxicity in Online Gaming Spaces</h3>
++                    <button type="button" class="topic-button" data-modal-target="toxicityModal" aria-haspopup="dialog" aria-controls="toxicityModal">Reducing Toxicity in Online Gaming Spaces</button>
+                 </div>
+ 
+                 <div class="topic-card">
+                     <h3>Ethical AI and Human–Machine Empathy</h3>
+                 </div>
+ 
+                 <div class="topic-card">
+                     <h3>Positive Attitude Formation & Emotional Intelligence</h3>
+                 </div>
+             </div>
+ 
+             <!-- Speaking Engagements -->
+             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                 Speaking Engagements
+             </h3>
+             
+             <div class="table-container">
+                 <table class="speaking-table">
+                     <tbody>
+                         <tr>
+                             <td data-label="Date">Aug 15, 2025</td>
+                             <td data-label="Location">Rochester, USA</td>
+-                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Conference at the University of Rochester</a><br><em>"The Psychology and Technology Behind Safer Gaming"</em></td>
++                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank" rel="noopener noreferrer">Serious Play Conference at the University of Rochester</a><br><em>"The Psychology and Technology Behind Safer Gaming"</em></td>
+                         </tr>
+                         <tr>
+                             <td data-label="Date">Aug 15, 2025</td>
+                             <td data-label="Location">Rochester, USA</td>
+-                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank">Serious Play Esports Summit</a><br><em>"Using AI and Positive Psychology to Transform Harmful Behaviours in Online Gaming Communities"</em></td>
++                            <td data-label="Title"><a href="https://seriousplayconf.com" target="_blank" rel="noopener noreferrer">Serious Play Esports Summit</a><br><em>"Using AI and Positive Psychology to Transform Harmful Behaviours in Online Gaming Communities"</em></td>
+                         </tr>
+                         <tr>
+                             <td data-label="Date">Jun 13, 2025</td>
+                             <td data-label="Location">Toronto, Canada</td>
+-                            <td data-label="Title"><a href="https://xpgamesummit.com" target="_blank">XP Game Summit 2025</a><br><em>"Creating Safer Online Spaces for Youth"</em></td>
++                            <td data-label="Title"><a href="https://xpgamesummit.com" target="_blank" rel="noopener noreferrer">XP Game Summit 2025</a><br><em>"Creating Safer Online Spaces for Youth"</em></td>
+                         </tr>
+                         <tr>
+                             <td data-label="Date">May 21–23, 2025</td>
+                             <td data-label="Location">Grimstad, Norway</td>
+-                            <td data-label="Title"><a href="https://www.uia.no/en" target="_blank">The Academic Esports Seminar at UiA Grimstad</a></td>
++                            <td data-label="Title"><a href="https://www.uia.no/en" target="_blank" rel="noopener noreferrer">The Academic Esports Seminar at UiA Grimstad</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Feb 14, 2020</td>
+                             <td data-label="Location">Toronto, Canada</td>
+                             <td data-label="Title">TCDSB Leaders of Your Own Learning (LOYOL)<br><em>"Mental Health in the Classroom"</em></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">May 22, 2019</td>
+                             <td data-label="Location">Toronto, Canada</td>
+-                            <td data-label="Title"><a href="https://collisionconf.com" target="_blank">Empowering Women and Wellness in the Workplace – Collision Conference</a></td>
++                            <td data-label="Title"><a href="https://collisionconf.com" target="_blank" rel="noopener noreferrer">Empowering Women and Wellness in the Workplace – Collision Conference</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Mar 26, 2019</td>
+                             <td data-label="Location">Mississauga, Canada</td>
+                             <td data-label="Title"><em>All You Need to Know About Psycho-Educational Assessments</em><br>Learning Disabilities Peel Region (LDPR)</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Aug 20, 2019</td>
+                             <td data-label="Location">Mississauga, Canada</td>
+-                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>Ways to Motivate and Engage Students with a Learning Disability</em><br>LD@school's 6th Annual Educators' Institute</a></td>
++                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank" rel="noopener noreferrer"><em>Ways to Motivate and Engage Students with a Learning Disability</em><br>LD@school's 6th Annual Educators' Institute</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Aug 22, 2018</td>
+                             <td data-label="Location">Toronto, Canada</td>
+-                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank"><em>IDEAL ME: Confident, Assertive, In Charge – Developing the Attitudes of Leadership</em><br>LD@school's 5th Annual Educators' Institute</a></td>
++                            <td data-label="Title"><a href="https://www.ldatschool.ca" target="_blank" rel="noopener noreferrer"><em>IDEAL ME: Confident, Assertive, In Charge – Developing the Attitudes of Leadership</em><br>LD@school's 5th Annual Educators' Institute</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jun 21, 2018</td>
+                             <td data-label="Location">Dnipropetrovsk, Ukraine (videoconference)</td>
+                             <td data-label="Title"><em>Management and Leadership in the Multicultural Society</em><br>Guest Speaker, National Mining University</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Nov 10, 2016</td>
+                             <td data-label="Location">Mississauga, Canada</td>
+                             <td data-label="Title"><em>Preserving Our Working Memory</em><br>Rotary Club Presentation</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Nov 3, 2016</td>
+                             <td data-label="Location">Mississauga, Canada</td>
+                             <td data-label="Title"><em>Working Memory</em><br>Rotary Club Presentation</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jan 2015</td>
+                             <td data-label="Location">Montreal, Canada</td>
+                             <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Sep 2014</td>
+                             <td data-label="Location">Burlington, Canada</td>
+                             <td data-label="Title"><em>Enhancing Child's Interest in Learning</em><br>Polish Teachers Federation</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jun 2014</td>
+                             <td data-label="Location">Mississauga, Canada</td>
+                             <td data-label="Title"><em>Changing Negative Attitudes in Children and Youths</em></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Oct 2006</td>
+                             <td data-label="Location">San Diego, USA</td>
+-                            <td data-label="Title"><a href="https://nanonline.org" target="_blank"><em>Social Intelligence Test-R as a Neuropsychological Instrument</em><br>Poster, National Academy of Neuropsychology Conference</a></td>
++                            <td data-label="Title"><a href="https://nanonline.org" target="_blank" rel="noopener noreferrer"><em>Social Intelligence Test-R as a Neuropsychological Instrument</em><br>Poster, National Academy of Neuropsychology Conference</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jun 2005</td>
+                             <td data-label="Location">Würzburg, Germany</td>
+                             <td data-label="Title"><em>Why Stories Make Us More Helpful</em><br>14th General Meeting</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jun 2004</td>
+                             <td data-label="Location">Mądralin, Poland</td>
+                             <td data-label="Title"><em>Personal History and Stereotype as Two Contexts of Person Cognition</em><br>Conference on Psychological Context in Intergroup Relations (Dr. M. Kofta)</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Sep 2003</td>
+                             <td data-label="Location">Padova, Italy</td>
+-                            <td data-label="Title"><a href="https://www.escon-society.eu" target="_blank"><em>Narrative Mode Influence on Person Impression</em><br>ESCON Conference</a></td>
++                            <td data-label="Title"><a href="https://www.escon-society.eu" target="_blank" rel="noopener noreferrer"><em>Narrative Mode Influence on Person Impression</em><br>ESCON Conference</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Sep 2003</td>
+                             <td data-label="Location">St. Kathrin, Poland</td>
+                             <td data-label="Title"><em>Narrative Mode Influence on Person Impression</em><br>III Polish Conference of Narrative Psychology (Dr. P. Oleś)</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Feb 2003</td>
+                             <td data-label="Location">Warsaw, Poland</td>
+                             <td data-label="Title"><em>Workshops on Social Advertising</em></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jun 2001</td>
+                             <td data-label="Location">Warsaw, Poland</td>
+                             <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Warsaw Workshop on Social Psychology</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">May 2001</td>
+                             <td data-label="Location">Kraków, Poland</td>
+                             <td data-label="Title"><em>The Effectiveness of Fear Appeal Public Service Announcements</em><br>Crackfilm Festival</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Date">Jan 2001</td>
+                             <td data-label="Location">Wrocław, Poland</td>
+                             <td data-label="Title"><em>Changing Attitudes: "New Millennium – I Do Not Smoke Because I Like It." Social Marketing as a Weapon Against Smoking</em></td>
+@@ -1651,51 +1659,51 @@
+             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                 Research Projects
+             </h3>
+             
+             <div class="table-container">
+                 <table class="research-table">
+                     <tbody>
+                         <tr>
+                             <td data-label="Year">2025</td>
+                             <td data-label="Project Title">
+                                 <div class="project-title">AI–Human Alignment in Evaluating Online Behavior</div>
+                                 <div class="project-note">(Poster Finalist – Ontario Psychological Association 2025)</div>
+                             </td>
+                             <td data-label="Description">Empirical validation comparing AI-generated and human ratings of emotional and behavioral attributes across multiple platforms.</td>
+                         </tr>
+                         <tr>
+                             <td data-label="Year">2025</td>
+                             <td data-label="Project Title">
+                                 <div class="project-title">Transforming Digital Human Interaction: The Felixa Psychological Foundations</div>
+                             </td>
+                             <td data-label="Description">Conceptual manifesto defining the psychological, philosophical, and behavioral framework behind Felixa; bridges psychology, ethics, and AI.</td>
+                         </tr>
+                         <tr>
+                             <td data-label="Year">2025</td>
+                             <td data-label="Project Title">
+-                                <div class="project-title"><a href="https://osf.io/preprints/psyarxiv/utypx_v1?utm_source=chatgpt.com" target="_blank">The Psychology and Technology Behind Safer Gaming Communities</a></div>
++                                <div class="project-title"><a href="https://osf.io/preprints/psyarxiv/utypx_v1?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer">The Psychology and Technology Behind Safer Gaming Communities</a></div>
+                             </td>
+                             <td data-label="Description">Published study integrating psychology and AI for safer gaming environments; presented at Serious Play & XP Game Summit.</td>
+                         </tr>
+                         <tr>
+                             <td data-label="Year">2024</td>
+                             <td data-label="Project Title">
+                                 <div class="project-title">Behavioral and Semantic Markers as Predictive Tools</div>
+                             </td>
+                             <td data-label="Description">Development of AI-driven linguistic and behavioral indicators that predict and transform toxic interaction patterns in gaming and streaming ecosystems.</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Year">2023</td>
+                             <td data-label="Project Title">
+                                 <div class="project-title">Internet and Digital Media Usage and Its Impact on Mental Well-Being</div>
+                             </td>
+                             <td data-label="Description">Examined behavioral, emotional, and motivational effects of prolonged digital exposure; foundation for Felixa's digital-behavior framework.</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Year">2021 – Present</td>
+                             <td data-label="Project Title">
+                                 <div class="project-title">Felixa Health – AI for Safer Digital Communities</div>
+                             </td>
+                             <td data-label="Description">Behavioral analytics platform merging psychology and AI to detect, interpret, and transform toxic online behaviors.</td>
+                         </tr>
+                         <tr class="hidden-row">
+@@ -1789,158 +1797,160 @@
+                 <span class="section-badge">Publications</span>
+                 <h2 class="section-title">Scholarly <span class="gradient-text">Contributions</span></h2>
+             </div>
+ 
+             <div class="speaking-intro">
+                 <p>
+                     Peer-reviewed publications, books, and scholarly contributions spanning narrative psychology, 
+                     social advertising, behavioral science, and AI-driven digital safety solutions.
+                 </p>
+             </div>
+ 
+             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
+                 Published Works
+             </h3>
+             
+             <div class="table-container">
+                 <table class="publications-table">
+                     <tbody>
+                         <tr>
+                             <td data-label="Citation">Antczak, E. J. (2025). <em>Transforming digital human interaction: The Felixa psychological foundations.</em> Conceptual manuscript in progress.</td>
+                         </tr>
+                         <tr>
+                             <td data-label="Citation">Antczak, E. J. (2025). <em>Human–AI alignment in digital ethics: Toward proactive behavioral intervention systems.</em> Manuscript submitted for publication.</td>
+                         </tr>
+                         <tr>
+-                            <td data-label="Citation">Antczak, E. J. (2025). <em>The psychology and technology behind safer gaming communities: How Felixa shapes safe online interactions</em> [PsyArXiv preprint]. <em>PsyArXiv.</em> <a href="https://osf.io/preprints/psyarxiv/utypx_v1" target="_blank">https://osf.io/preprints/psyarxiv/utypx_v1</a></td>
++                            <td data-label="Citation">Antczak, E. J. (2025). <em>The psychology and technology behind safer gaming communities: How Felixa shapes safe online interactions</em> [PsyArXiv preprint]. <em>PsyArXiv.</em> <a href="https://osf.io/preprints/psyarxiv/utypx_v1" target="_blank" rel="noopener noreferrer">https://osf.io/preprints/psyarxiv/utypx_v1</a></td>
+                         </tr>
+                         <tr>
+                             <td data-label="Citation">Antczak, E. J. (2018). <em>Happiness of other people does not make us happy.</em> <em>Toronto Waterfront Magazine.</em></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Citation">Antczak, E. J. (2016–2018). <em>Bi-weekly columns.</em> <em>GazetaGazeta</em> (print & online).</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Citation">Antczak, E. J. (2008). <em>Propaganda dobrych serc – vademecum o reklamie społecznej</em> [<em>Propaganda of Good Hearts – Handbook on Social Advertising</em>]. Kraków, Poland: Agencja Wasilewski.</td>
+                         </tr>
+                         <tr class="hidden-row">
+-                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2007). <em>Narrative mode in impression formation.</em> <em>Psychology of Language and Communication, 11</em>(2), 65–83. <a href="https://www.researchgate.net/publication/237699669_Narrative_mode_in_impression_formation" target="_blank">https://www.researchgate.net/publication/237699669</a></td>
++                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2007). <em>Narrative mode in impression formation.</em> <em>Psychology of Language and Communication, 11</em>(2), 65–83. <a href="https://www.researchgate.net/publication/237699669_Narrative_mode_in_impression_formation" target="_blank" rel="noopener noreferrer">https://www.researchgate.net/publication/237699669</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+-                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2006). <em>A story and a stereotype: Two frames for person perception.</em> <em>Psychologia Społeczna, 1</em>(2), 121–131. <a href="https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.desklight-c5e36407-df59-454b-9ad1-c93cfb5ff9f0" target="_blank">View publication</a></td>
++                            <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2006). <em>A story and a stereotype: Two frames for person perception.</em> <em>Psychologia Społeczna, 1</em>(2), 121–131. <a href="https://cejsh.icm.edu.pl/cejsh/element/bwmeta1.element.desklight-c5e36407-df59-454b-9ad1-c93cfb5ff9f0" target="_blank" rel="noopener noreferrer">View publication</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+-                            <td data-label="Citation">Celiński, M. J., Salmon, J. D., Allen, L. M., Palucka, A., & Antczak, E. J. (2006). <em>Social Intelligence Test-R as a neuropsychological instrument</em> [Conference abstract]. <em>Archives of Clinical Neuropsychology, 21</em>(6), 544. <a href="https://academic.oup.com/acn/article/21/6/544/3185" target="_blank">https://academic.oup.com/acn/article/21/6/544/3185</a></td>
++                            <td data-label="Citation">Celiński, M. J., Salmon, J. D., Allen, L. M., Palucka, A., & Antczak, E. J. (2006). <em>Social Intelligence Test-R as a neuropsychological instrument</em> [Conference abstract]. <em>Archives of Clinical Neuropsychology, 21</em>(6), 544. <a href="https://academic.oup.com/acn/article/21/6/544/3185" target="_blank" rel="noopener noreferrer">https://academic.oup.com/acn/article/21/6/544/3185</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Citation">Antczak, E. J. (2004). <em>Narrative mode influences mindset in understanding others</em> (Doctoral dissertation). University of Social Sciences and Humanities (SWPS University), Warsaw, Poland.</td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Citation">Trzebiński, J., & Antczak, E. J. (2003). <em>Personal history and stereotype as two contexts of person cognition.</em> In E. Zdankiewicz-Ścigała & T. Maruszewski (Eds.), <em>Around psychomanipulation</em> (pp. 201–218). Warsaw, Poland: Academica.</td>
+                         </tr>
+                         <tr class="hidden-row">
+-                            <td data-label="Citation">Antczak, E. J. (2002). <em>Seven chapters.</em> In D. Maison & P. Wasilewski (Eds.), <em>Propaganda dobrych serc, czyli rzecz o reklamie społecznej</em> (pp. 145–190). Kraków, Poland: Agencja Wasilewski. <a href="https://www.maisonlab.pl" target="_blank">https://www.maisonlab.pl</a></td>
++                            <td data-label="Citation">Antczak, E. J. (2002). <em>Seven chapters.</em> In D. Maison & P. Wasilewski (Eds.), <em>Propaganda dobrych serc, czyli rzecz o reklamie społecznej</em> (pp. 145–190). Kraków, Poland: Agencja Wasilewski. <a href="https://www.maisonlab.pl" target="_blank" rel="noopener noreferrer">https://www.maisonlab.pl</a></td>
+                         </tr>
+                         <tr class="hidden-row">
+                             <td data-label="Citation">Antczak, E. J. (2001). <em>Fear and alexithymia influence public service announcement perception</em> (Master's thesis). University of Social Sciences and Humanities (SWPS University), Warsaw, Poland.</td>
+                         </tr>
+                     </tbody>
+                 </table>
+             </div>
+ 
+             <button class="show-more-btn" id="showMorePublicationsBtn" onclick="togglePublicationsRows()">
+                 Show More ▼
+             </button>
+ 
+             <!-- Call to Action -->
+             <div class="cta-box" style="margin-top: 3rem;">
+                 <h3>Explore My Research & Publications</h3>
+                 <p>
+                     Interested in collaborating or learning more about my work in behavioral science and digital ethics?
+                 </p>
+                 <a href="#contact" class="btn btn-primary">
+                     Get in Touch
+                 </a>
+                 <a href="mailto:ewa@felixagaming.com" class="btn btn-outline">
+                     Email Directly
+                 </a>
+             </div>
+         </div>
+     </section>
+ 
+     <section class="section" id="contact">
+         <div class="container">
+             <div class="section-header">
+                 <span class="section-badge">Contact</span>
+                 <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+                 <p style="color: var(--gray-400); max-width: 600px; margin: 0 auto;">
+                     Whether you're looking for a speaker, research partner, or innovative solutions for digital well-being, let's connect.
+                 </p>
+             </div>
+             
+             <div class="contact-grid">
+                 <div class="contact-card">
+                     <h3>
+-                        <img src="email.webp" class="contact-icon"> Email
++                        <img src="email.webp" class="contact-icon" alt="Email icon" loading="lazy"> Email
+                     </h3>
+                     <a href="mailto:ewa@felixagaming.com">ewa@felixagaming.com</a>
+                 </div>
+                 
+                 <div class="contact-card">
+                     <h3>
+-                        <img src="IN.png.webp" class="contact-icon"> LinkedIn
++                        <img src="IN.png.webp" class="contact-icon" alt="LinkedIn logo" loading="lazy"> LinkedIn
+                     </h3>
+-                    <a href="https://linkedin.com/in/ewaantczak" target="_blank">linkedin.com/in/ewaantczak</a>
++                    <a href="https://linkedin.com/in/ewaantczak" target="_blank" rel="noopener noreferrer">linkedin.com/in/ewaantczak</a>
+                 </div>
+                 
+                 <div class="contact-card">
+                     <h3>
+-                        <img src="Felixa logo.jpg" class="contact-icon"> Felixa Health
++                        <img src="Felixa logo.jpg" class="contact-icon" alt="Felixa Health logo" loading="lazy"> Felixa Health
+                     </h3>
+-                    <a href="https://felixagaming.com" target="_blank">felixagaming.com</a>
++                    <a href="https://felixagaming.com" target="_blank" rel="noopener noreferrer">felixagaming.com</a>
+                 </div>
+                 
+                 <div class="contact-card">
+                     <h3>
+-                        <img src="Logo Core.png" class="contact-icon"> Core Centre
++                        <img src="Logo Core.png" class="contact-icon" alt="Core Centre logo" loading="lazy"> Core Centre
+                     </h3>
+-                    <a href="https://corecentre.ca" target="_blank">corecentre.ca</a>
++                    <a href="https://corecentre.ca" target="_blank" rel="noopener noreferrer">corecentre.ca</a>
+                 </div>
+             </div>
+         </div>
+     </section>
+ 
+     <footer>
+         <p style="color: var(--gray-500); margin-bottom: 0.5rem;">
+             © 2025 Dr. Ewa J. Antczak. All rights reserved.
+         </p>
+         <p style="color: var(--gray-500); font-size: 0.875rem;">
+             
+         </p>
+     </footer>
+ 
+     <script>
++        let lastFocusedElement = null;
 +
-+## Deploying to GitHub Pages
+         window.addEventListener('scroll', function() {
+             const navbar = document.getElementById('navbar');
+             if (window.scrollY > 50) {
+                 navbar.classList.add('scrolled');
+             } else {
+                 navbar.classList.remove('scrolled');
+             }
+         });
+ 
+         // Speaking table show more/less functionality
+         function initializeSpeakingTable() {
+             const tableRows = document.querySelectorAll('.speaking-table tbody tr');
+             tableRows.forEach((row, index) => {
+                 if (index > 3) {
+                     row.classList.add('hidden-row');
+                 }
+             });
+         }
+ 
+         function toggleSpeakingRows() {
+             const tableRows = document.querySelectorAll('.speaking-table tbody tr');
+             const btn = document.getElementById('showMoreBtn');
+             const hiddenRows = document.querySelectorAll('.speaking-table tbody tr.hidden-row');
+             
+             if (hiddenRows.length > 0) {
+@@ -2019,109 +2029,159 @@
+                 tableRows.forEach(row => {
+                     row.classList.remove('hidden-row');
+                 });
+                 btn.innerHTML = 'Show Less ▲';
+             } else {
+                 tableRows.forEach((row, index) => {
+                     if (index > 3) {
+                         row.classList.add('hidden-row');
+                     }
+                 });
+                 btn.innerHTML = 'Show More ▼';
+                 setTimeout(() => {
+                     document.querySelector('.publications-table').scrollIntoView({ 
+                         behavior: 'smooth', 
+                         block: 'nearest' 
+                     });
+                 }, 100);
+             }
+         }
+ 
+         // Initialize on page load
+         window.addEventListener('DOMContentLoaded', function() {
+             initializeSpeakingTable();
+             initializeResearchTable();
+             initializePublicationsTable();
 +
-+1. Commit your changes locally.
-+2. Push the changes to the `main` branch of this repository (`ewaantczak/ewaantczak.github.io`).
-+3. GitHub Pages will automatically rebuild and serve the site at `https://ewaantczak.github.io/` within a few minutes.
++            document.querySelectorAll('[data-modal-target]').forEach(button => {
++                button.addEventListener('click', () => {
++                    const targetId = button.getAttribute('data-modal-target');
 +
-+Because this repository uses the special `<username>.github.io` naming convention, no extra GitHub Pages configuration is needed—GitHub serves the content directly from the repository root.
++                    if (targetId) {
++                        openModal(targetId);
++                    }
++                });
++            });
+         });
+ 
+-        // Modal functions for talk description
+-        function openTalkModal() {
+-            document.getElementById('talkModal').style.display = 'block';
++        function openModal(modalId) {
++            const modal = document.getElementById(modalId);
 +
-+## Using a Custom Domain
++            if (!modal) {
++                return;
++            }
 +
-+If you want to point a custom domain at the site:
++            const triggerElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 +
-+1. Add a `CNAME` file at the repository root containing your domain name (e.g., `www.example.com`).
-+2. In your domain registrar's DNS settings, create a `CNAME` record pointing the domain to `ewaantczak.github.io`.
-+3. In the GitHub repository settings under **Pages**, add the custom domain so GitHub can provision the certificate.
++            document.querySelectorAll('.modal[data-open="true"]').forEach(openModalElement => {
++                if (openModalElement.id !== modalId) {
++                    closeModal(openModalElement.id, { restoreFocus: false });
++                }
++            });
 +
-+## Previewing Locally
++            lastFocusedElement = triggerElement;
++            modal.style.display = 'block';
++            modal.setAttribute('data-open', 'true');
+             document.body.style.overflow = 'hidden'; // Prevent background scrolling
 +
-+You can open `index.html` directly in a browser or use a simple static server such as Python's built-in module:
++            const focusTarget = modal.querySelector('.modal-content');
++            if (focusTarget instanceof HTMLElement) {
++                focusTarget.focus();
++            }
+         }
+ 
+-        function closeTalkModal() {
+-            document.getElementById('talkModal').style.display = 'none';
+-            document.body.style.overflow = 'auto'; // Restore scrolling
++        function closeModal(modalId, { restoreFocus = true } = {}) {
++            const modal = document.getElementById(modalId);
 +
-+```bash
-+python3 -m http.server 8000
-+```
++            if (!modal) {
++                return;
++            }
 +
-+Then visit `http://localhost:8000` to verify changes before pushing them live.
++            modal.style.display = 'none';
++            modal.removeAttribute('data-open');
++
++            const anyOpenModal = document.querySelector('.modal[data-open="true"]');
++
++            if (!anyOpenModal) {
++                document.body.style.overflow = 'auto'; // Restore scrolling when all modals are closed
++            }
++
++            if (restoreFocus && lastFocusedElement instanceof HTMLElement) {
++                lastFocusedElement.focus();
++                lastFocusedElement = null;
++            } else if (!restoreFocus && !anyOpenModal) {
++                lastFocusedElement = null;
++            }
+         }
+ 
+         // Close modal when clicking outside of it
+         function closeModalOnBackdrop(event) {
+-            const modal = document.getElementById('talkModal');
+-            if (event.target === modal) {
+-                closeTalkModal();
++            if (event.target.classList.contains('modal')) {
++                closeModal(event.target.id);
+             }
+         }
+ 
+         // Close modal with Escape key
+         document.addEventListener('keydown', function(event) {
+             if (event.key === 'Escape') {
+-                closeTalkModal();
++                document.querySelectorAll('.modal[data-open="true"]').forEach(openModalElement => {
++                    closeModal(openModalElement.id);
++                });
+             }
+         });
+     </script>
+ 
+     <!-- Talk Description Modal -->
+-    <div id="talkModal" class="modal" onclick="closeModalOnBackdrop(event)">
+-        <div class="modal-content">
++    <div id="talkModal" class="modal" onclick="closeModalOnBackdrop(event)" role="dialog" aria-modal="true" aria-labelledby="talkModalTitle" aria-describedby="talkModalIntro">
++        <div class="modal-content" tabindex="-1">
+             <div class="modal-header">
+-                <span class="close" onclick="closeTalkModal()">&times;</span>
+-                <h2>The Psychology and Technology Behind Safer Gaming</h2>
++                <button type="button" class="close" onclick="closeModal('talkModal')" aria-label="Close dialog">&times;</button>
++                <h2 id="talkModalTitle">The Psychology and Technology Behind Safer Gaming</h2>
+             </div>
+             <div class="modal-body">
+                 <!-- Legend -->
+                 <div class="modal-legend">
+                     <div class="legend-item">
+                         <div class="legend-color" style="background: rgba(139, 92, 246, 0.6);"></div>
+                         <span>Seminar</span>
+                     </div>
+                     <div class="legend-item">
+                         <div class="legend-color" style="background: rgba(236, 72, 153, 0.6);"></div>
+                         <span>Workshop</span>
+                     </div>
+                     <div class="legend-item">
+                         <div class="legend-color" style="background: rgba(192, 132, 252, 0.6);"></div>
+                         <span>15/30/60 min Talk</span>
+                     </div>
+                     <div class="legend-item">
+                         <div class="legend-color" style="background: rgba(168, 85, 247, 0.6);"></div>
+                         <span>Panel</span>
+                     </div>
+                 </div>
+ 
+                 <!-- Overview -->
+-                <p>We are living in a transformative era where emerging technologies and online platforms have redefined how people connect, collaborate, and play. While these spaces offer valuable opportunities for creativity and community, they also expose users to harmful behaviors including aggression, hate speech, exclusion, and harassment. Ensuring psychological safety within digital environments has become a pressing societal concern.</p>
++                <p id="talkModalIntro">We are living in a transformative era where emerging technologies and online platforms have redefined how people connect, collaborate, and play. While these spaces offer valuable opportunities for creativity and community, they also expose users to harmful behaviors including aggression, hate speech, exclusion, and harassment. Ensuring psychological safety within digital environments has become a pressing societal concern.</p>
+ 
+                 <!-- Audience Section -->
+                 <div class="modal-section">
+                     <div class="modal-section-title">Who Should Attend</div>
+                     <div>
+                         <span class="audience-tag">Policymakers</span>
+                         <span class="audience-tag">Educators</span>
+                         <span class="audience-tag">Gamers</span>
+                         <span class="audience-tag">Mental Health Practitioners</span>
+                         <span class="audience-tag">Gaming Industry</span>
+                         <span class="audience-tag">Social Media</span>
+                         <span class="audience-tag">Community Managers</span>
+                     </div>
+                 </div>
+ 
+                 <p>Together we will explore how behavioral science and AI can reduce toxicity and build stronger trust and safety online. When we protect digital trust, we not only support mental health but also preserve the freedom to play, collaborate, and create without fear of harassment or silencing.</p>
+ 
+                 <!-- Key Topics Section -->
+                 <div class="modal-section">
+                     <div class="modal-section-title">Key Topics Covered</div>
+                     <div>
+                         <span class="topic-tag">Behavioral Science</span>
+                         <span class="topic-tag">AI Technology</span>
+                         <span class="topic-tag">Toxicity Reduction</span>
+                         <span class="topic-tag">Empathy & Emotional Intelligence</span>
+@@ -2142,27 +2202,110 @@
+                 <ul>
+                     <li><strong>Apply research-based strategies</strong> to design safer, more inclusive digital environments that support well-being and strengthen civic participation</li>
+                     <li><strong>Access AI-driven tools</strong> that evaluate community health and provide compliance reports within minutes</li>
+                     <li><strong>Understand how toxic behaviors</strong> spill over into civic spaces, reducing public trust and discouraging meaningful engagement</li>
+                     <li><strong>Move beyond punishment</strong> to proactive, science-driven strategies that prevent escalation and encourage positive behavior at scale</li>
+                 </ul>
+ 
+                 <!-- Expected Outcomes Section -->
+                 <div class="modal-section">
+                     <div class="modal-section-title">Expected Outcomes</div>
+                     <div>
+                         <span class="outcome-tag">Mental Health Protection</span>
+                         <span class="outcome-tag">Compliance (DSA, OSA, COPPA)</span>
+                         <span class="outcome-tag">Improved Retention</span>
+                         <span class="outcome-tag">Increased Revenue</span>
+                         <span class="outcome-tag">Stronger Brand Reputation</span>
+                         <span class="outcome-tag">Reduced Churn</span>
+                     </div>
+                 </div>
+ 
+                 <p>Attendees will leave with actionable insights and a clear roadmap showing how investing in community health creates both healthier players and healthier bottom lines.</p>
+             </div>
+         </div>
+     </div>
+ 
++    <!-- Reducing Toxicity Modal -->
++    <div id="toxicityModal" class="modal" onclick="closeModalOnBackdrop(event)" role="dialog" aria-modal="true" aria-labelledby="toxicityModalTitle" aria-describedby="toxicityModalIntro">
++        <div class="modal-content" tabindex="-1">
++            <div class="modal-header">
++                <button type="button" class="close" onclick="closeModal('toxicityModal')" aria-label="Close dialog">&times;</button>
++                <h2 id="toxicityModalTitle">Reducing Toxicity in Online Gaming Spaces</h2>
++            </div>
++            <div class="modal-body">
++                <div class="modal-legend">
++                    <div class="legend-item">
++                        <div class="legend-color" style="background: rgba(139, 92, 246, 0.6);"></div>
++                        <span>Seminar</span>
++                    </div>
++                    <div class="legend-item">
++                        <div class="legend-color" style="background: rgba(236, 72, 153, 0.6);"></div>
++                        <span>Workshop</span>
++                    </div>
++                    <div class="legend-item">
++                        <div class="legend-color" style="background: rgba(192, 132, 252, 0.6);"></div>
++                        <span>15/30/60 min Talk</span>
++                    </div>
++                    <div class="legend-item">
++                        <div class="legend-color" style="background: rgba(168, 85, 247, 0.6);"></div>
++                        <span>Panel</span>
++                    </div>
++                </div>
++
++                <h3>Why This Matters</h3>
++                <p id="toxicityModalIntro">Did you know that 87% of gamers are bullied online? Toxicity is now the leading reason players quit gaming. What was once designed as a space for creativity, collaboration, and play has, for many, become a source of stress, exclusion, and harm. The need to ensure psychological safety in gaming environments has never been more urgent—for developers, studios, and communities alike.</p>
++
++                <div class="modal-section">
++                    <div class="modal-section-title">Who Should Attend</div>
++                    <div>
++                        <span class="audience-tag">Game Developers</span>
++                        <span class="audience-tag">Esports Organizers</span>
++                        <span class="audience-tag">Community Managers</span>
++                        <span class="audience-tag">Trust &amp; Safety Professionals</span>
++                        <span class="audience-tag">Educators</span>
++                        <span class="audience-tag">Policymakers</span>
++                    </div>
++                </div>
++
++                <h3>Session Overview</h3>
++                <p>This session is designed for game developers, esports organizers, community managers, trust-and-safety professionals, educators, and policymakers who shape the future of digital play. Together, we will explore how behavioral science and AI-driven technologies can reduce toxicity, enhance player well-being, and strengthen trust across gaming ecosystems. Protecting emotional safety online doesn’t just promote mental health—it preserves the freedom to play, compete, and create without fear of abuse or silencing.</p>
++
++                <div class="modal-section">
++                    <div class="modal-section-title">Key Topics Covered</div>
++                    <div>
++                        <span class="topic-tag">Behavioral Science</span>
++                        <span class="topic-tag">AI-Driven Safety Tech</span>
++                        <span class="topic-tag">Player Well-Being</span>
++                        <span class="topic-tag">Trust &amp; Safety</span>
++                        <span class="topic-tag">Real-time Analytics</span>
++                        <span class="topic-tag">Community Transformation</span>
++                    </div>
++                </div>
++
++                <h3>Inside the Session</h3>
++                <p>Drawing on recent validation studies and large-scale player data, I will use live gameplay examples and AI demos to show how psychological factors (empathy gaps, emotional regulation, dark triad traits) and environmental drivers (anonymity, toxic reward loops, competitive modeling) contribute to harmful behaviors. We’ll also examine how real-time behavioral analytics and AI-guided interventions can transform community culture from reactive moderation to proactive prevention.</p>
++
++                <h3>What You'll Experience</h3>
++                <ul>
++                    <li>Actionable frameworks for turning reactive moderation into proactive prevention strategies.</li>
++                    <li>Insights into AI-guided interventions that measure, predict, and de-escalate harmful behaviors in real time.</li>
++                    <li>Collaborative exercises that help teams design safer, more inclusive gaming ecosystems.</li>
++                </ul>
++
++                <div class="modal-section">
++                    <div class="modal-section-title">Expected Outcomes</div>
++                    <div>
++                        <span class="outcome-tag">Healthier Communities</span>
++                        <span class="outcome-tag">Player Retention</span>
++                        <span class="outcome-tag">Reduced Support Load</span>
++                        <span class="outcome-tag">Stronger Trust &amp; Safety</span>
++                        <span class="outcome-tag">Positive Player Well-Being</span>
++                    </div>
++                </div>
++
++                <p>Leave with a roadmap for protecting emotional safety online while sustaining the creativity, competition, and community that make gaming thrive.</p>
++            </div>
++        </div>
++    </div>
++
+ </body>
+ </html> 
+EOF
+)
