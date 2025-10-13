@@ -1170,6 +1170,83 @@
             text-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
         }
 
+        .modal-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .audience-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(139, 92, 246, 0.15);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: var(--primary-light);
+        }
+
+        .topic-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(236, 72, 153, 0.15);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+            color: #f9a8d4;
+        }
+
+        .outcome-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(192, 132, 252, 0.15);
+            border: 1px solid rgba(192, 132, 252, 0.3);
+            color: #e9d5ff;
+        }
+
+        .modal-section {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
@@ -2001,9 +2078,57 @@
                 <h2>The Psychology and Technology Behind Safer Gaming</h2>
             </div>
             <div class="modal-body">
+                <!-- Legend -->
+                <div class="modal-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(139, 92, 246, 0.6);"></div>
+                        <span>Seminar</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(236, 72, 153, 0.6);"></div>
+                        <span>Workshop</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(192, 132, 252, 0.6);"></div>
+                        <span>15/30/60 min Talk</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(168, 85, 247, 0.6);"></div>
+                        <span>Panel</span>
+                    </div>
+                </div>
+
+                <!-- Overview -->
                 <p>We are living in a transformative era where emerging technologies and online platforms have redefined how people connect, collaborate, and play. While these spaces offer valuable opportunities for creativity and community, they also expose users to harmful behaviors including aggression, hate speech, exclusion, and harassment. Ensuring psychological safety within digital environments has become a pressing societal concern.</p>
 
-                <p>This session is for anyone shaping digital culture—from gaming and social media to DIY communities—as well as policymakers, educators, gamers, and parents. Together we will explore how behavioral science and AI can reduce toxicity and build stronger trust and safety online. When we protect digital trust, we not only support mental health but also preserve the freedom to play, collaborate, and create without fear of harassment or silencing.</p>
+                <!-- Audience Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Who Should Attend</div>
+                    <div>
+                        <span class="audience-tag">Policymakers</span>
+                        <span class="audience-tag">Educators</span>
+                        <span class="audience-tag">Gamers</span>
+                        <span class="audience-tag">Mental Health Practitioners</span>
+                        <span class="audience-tag">Gaming Industry</span>
+                        <span class="audience-tag">Social Media</span>
+                        <span class="audience-tag">Community Managers</span>
+                    </div>
+                </div>
+
+                <p>Together we will explore how behavioral science and AI can reduce toxicity and build stronger trust and safety online. When we protect digital trust, we not only support mental health but also preserve the freedom to play, collaborate, and create without fear of harassment or silencing.</p>
+
+                <!-- Key Topics Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Topics Covered</div>
+                    <div>
+                        <span class="topic-tag">Behavioral Science</span>
+                        <span class="topic-tag">AI Technology</span>
+                        <span class="topic-tag">Toxicity Reduction</span>
+                        <span class="topic-tag">Empathy & Emotional Intelligence</span>
+                        <span class="topic-tag">Community Health</span>
+                        <span class="topic-tag">Real-time Intervention</span>
+                    </div>
+                </div>
 
                 <p>Drawing on recent validation studies and global data, I will use <strong>live examples and demos</strong> to show how psychological factors (empathy deficits, emotional intelligence, dark triad traits) and environmental drivers (anonymity, toxic modeling, game reward systems) fuel harmful behaviors, and how community health assessments combined with proactive real-time AI interventions can create lasting change.</p>
 
@@ -2021,7 +2146,18 @@
                     <li><strong>Move beyond punishment</strong> to proactive, science-driven strategies that prevent escalation and encourage positive behavior at scale</li>
                 </ul>
 
-                <p>Reducing toxicity not only protects mental health and ensures compliance (Digital Services Act, Online Safety Act, COPPA) but also drives measurable business outcomes: improved retention, increased player spending, stronger brand reputation, and reduced churn.</p>
+                <!-- Expected Outcomes Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Expected Outcomes</div>
+                    <div>
+                        <span class="outcome-tag">Mental Health Protection</span>
+                        <span class="outcome-tag">Compliance (DSA, OSA, COPPA)</span>
+                        <span class="outcome-tag">Improved Retention</span>
+                        <span class="outcome-tag">Increased Revenue</span>
+                        <span class="outcome-tag">Stronger Brand Reputation</span>
+                        <span class="outcome-tag">Reduced Churn</span>
+                    </div>
+                </div>
 
                 <p>Attendees will leave with actionable insights and a clear roadmap showing how investing in community health creates both healthier players and healthier bottom lines.</p>
             </div>
