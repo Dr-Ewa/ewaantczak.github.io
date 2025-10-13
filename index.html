@@ -1440,11 +1440,11 @@
 
             <div class="topics-grid">
                 <div class="topic-card">
-                    <h3 class="clickable-title" onclick="openTalkModal()" style="cursor: pointer;">Using Psychology and Technology to Create Safer Online Spaces</h3>
+                    <h3 class="clickable-title" onclick="openTalkModal()">Using Psychology and Technology to Create Safer Online Spaces</h3>
                 </div>
 
                 <div class="topic-card">
-                    <h3>Reducing Toxicity in Online Gaming Spaces</h3>
+                    <h3 class="clickable-title" onclick="openToxicityModal()">Reducing Toxicity in Online Gaming Spaces</h3>
                 </div>
 
                 <div class="topic-card">
@@ -2046,19 +2046,34 @@
         // Modal functions for talk description
         function openTalkModal() {
             document.getElementById('talkModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeTalkModal() {
             document.getElementById('talkModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
+        }
+
+        // Modal functions for toxicity talk
+        function openToxicityModal() {
+            document.getElementById('toxicityModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeToxicityModal() {
+            document.getElementById('toxicityModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
         // Close modal when clicking outside of it
         function closeModalOnBackdrop(event) {
-            const modal = document.getElementById('talkModal');
-            if (event.target === modal) {
+            const talkModal = document.getElementById('talkModal');
+            const toxicityModal = document.getElementById('toxicityModal');
+            if (event.target === talkModal) {
                 closeTalkModal();
+            }
+            if (event.target === toxicityModal) {
+                closeToxicityModal();
             }
         }
 
@@ -2066,6 +2081,7 @@
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeTalkModal();
+                closeToxicityModal();
             }
         });
     </script>
@@ -2160,6 +2176,90 @@
                 </div>
 
                 <p>Attendees will leave with actionable insights and a clear roadmap showing how investing in community health creates both healthier players and healthier bottom lines.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toxicity Modal -->
+    <div id="toxicityModal" class="modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onclick="closeToxicityModal()">&times;</span>
+                <h2>Reducing Toxicity in Online Gaming Spaces</h2>
+            </div>
+            <div class="modal-body">
+                <!-- Legend -->
+                <div class="modal-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(139, 92, 246, 0.6);"></div>
+                        <span>Seminar</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(236, 72, 153, 0.6);"></div>
+                        <span>Workshop</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(192, 132, 252, 0.6);"></div>
+                        <span>15/30/60 min Talk</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: rgba(168, 85, 247, 0.6);"></div>
+                        <span>Panel</span>
+                    </div>
+                </div>
+
+                <!-- Overview -->
+                <p>Did you know that 87% of gamers are bullied online? Toxicity is now the leading reason players quit gaming. What was once designed as a space for creativity, collaboration, and play has, for many, become a source of stress, exclusion, and harm. The need to ensure psychological safety in gaming environments has never been more urgent—for developers, studios, and communities alike.</p>
+
+                <!-- Audience Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Who Should Attend</div>
+                    <div>
+                        <span class="audience-tag">Game Developers</span>
+                        <span class="audience-tag">Esports Organizers</span>
+                        <span class="audience-tag">Community Managers</span>
+                        <span class="audience-tag">Trust & Safety Professionals</span>
+                        <span class="audience-tag">Educators</span>
+                        <span class="audience-tag">Policymakers</span>
+                    </div>
+                </div>
+
+                <p>This session is designed for game developers, esports organizers, community managers, trust-and-safety professionals, educators, and policymakers who shape the future of digital play. Together, we will explore how behavioral science and AI-driven technologies can reduce toxicity, enhance player well-being, and strengthen trust across gaming ecosystems.</p>
+
+                <p>Protecting emotional safety online doesn't just promote mental health—it preserves the freedom to play, compete, and create without fear of abuse or silencing.</p>
+
+                <!-- Key Topics Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Key Topics Covered</div>
+                    <div>
+                        <span class="topic-tag">Behavioral Science</span>
+                        <span class="topic-tag">AI-Driven Technologies</span>
+                        <span class="topic-tag">Player Well-being</span>
+                        <span class="topic-tag">Empathy Gaps</span>
+                        <span class="topic-tag">Emotional Regulation</span>
+                        <span class="topic-tag">Community Culture Transformation</span>
+                    </div>
+                </div>
+
+                <h3>What You'll Discover</h3>
+                <p>Drawing on recent validation studies and large-scale player data, I will use <strong>live gameplay examples and AI demos</strong> to show how psychological factors (empathy gaps, emotional regulation, dark triad traits) and environmental drivers (anonymity, toxic reward loops, competitive modeling) contribute to harmful behaviors.</p>
+
+                <p>We'll also examine how real-time behavioral analytics and AI-guided interventions can transform community culture from reactive moderation to proactive prevention.</p>
+
+                <!-- Expected Outcomes Section -->
+                <div class="modal-section">
+                    <div class="modal-section-title">Expected Outcomes</div>
+                    <div>
+                        <span class="outcome-tag">Safer Gaming Environments</span>
+                        <span class="outcome-tag">Enhanced Player Retention</span>
+                        <span class="outcome-tag">Reduced Toxicity</span>
+                        <span class="outcome-tag">Proactive Prevention Strategies</span>
+                        <span class="outcome-tag">Healthier Communities</span>
+                        <span class="outcome-tag">Improved Mental Health</span>
+                    </div>
+                </div>
+
+                <p>Attendees will leave with practical strategies to create gaming spaces where players feel safe, respected, and empowered to engage authentically without fear of harassment.</p>
             </div>
         </div>
     </div>
