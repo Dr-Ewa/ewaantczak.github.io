@@ -1255,6 +1255,38 @@ footer a:hover img {
             margin-bottom: 0.75rem;
             font-weight: 700;
         }
+/* Highlight speaking cards that have clickable content */
+.topic-card.highlight-click {
+    cursor: pointer;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.25), 0 8px 30px rgba(139, 92, 246, 0.25);
+    position: relative;
+}
+
+.topic-card.highlight-click .clickable-title {
+    color: var(--primary);
+}
+
+.topic-card.highlight-click::after {
+    content: "Click to view";
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    font-size: 0.8rem;
+    color: var(--gray-400);
+    opacity: 0.8;
+}
+
+.topic-card.highlight-click:hover {
+    transform: translateY(-6px);
+    background: rgba(18, 18, 26, 0.95);
+    box-shadow: 0 14px 45px rgba(139, 92, 246, 0.35);
+}
+
+.topic-card.highlight-click:hover::after {
+    color: var(--primary-light);
+    opacity: 1;
+}
 
         @media (max-width: 768px) {
             .nav-menu {
@@ -1466,26 +1498,30 @@ footer a:hover img {
 
             <!-- Key Speaking Topics -->
             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
-                Keynote & Invited Speaking Themes
+                Keynote & Speaking Themes
             </h3>
 
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <h3 class="clickable-title" onclick="openTalkModal()">Using Psychology and Technology to Create Safer Online Spaces</h3>
-                </div>
+        <div class="topics-grid">
+    <!-- 1️⃣ First clickable card -->
+    <div class="topic-card highlight-click" onclick="openTalkModal()">
+        <h3 class="clickable-title" onclick="openTalkModal()">Using Psychology and Technology to Create Safer Online Spaces</h3>
+    </div>
 
-                <div class="topic-card">
-                    <h3 class="clickable-title" onclick="openToxicityModal()">Reducing Toxicity in Online Gaming Spaces</h3>
-                </div>
+    <!-- 2️⃣ Second clickable card -->
+    <div class="topic-card highlight-click" onclick="openToxicityModal()">
+        <h3 class="clickable-title" onclick="openToxicityModal()">Reducing Toxicity in Online Gaming Spaces</h3>
+    </div>
 
-                <div class="topic-card">
-                    <h3>Ethical AI and Human–Machine Empathy</h3>
-                </div>
+    <!-- 3️⃣ Regular (non-clickable) cards -->
+    <div class="topic-card">
+        <h3>Ethical AI and Human–Machine Empathy</h3>
+    </div>
 
-                <div class="topic-card">
-                    <h3>Positive Attitude Formation & Emotional Intelligence</h3>
-                </div>
-            </div>
+    <div class="topic-card">
+        <h3>Positive Attitude Formation & Emotional Intelligence</h3>
+    </div>
+</div>
+
 
             <!-- Speaking Engagements -->
             <h3 style="text-align: center; color: var(--primary); font-size: 1.8rem; margin: 3rem 0 1.5rem; text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);">
