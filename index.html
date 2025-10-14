@@ -1054,23 +1054,32 @@
         }
 
         footer {
-            background: var(--black);
-            border-top: 2px solid rgba(139, 92, 246, 0.2);
-            padding: 3rem 2rem 2rem;
-            text-align: center;
-            position: relative;
-        }
+    background: var(--black);
+    border-top: 2px solid rgba(139, 92, 246, 0.2);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+}
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            box-shadow: 0 0 10px var(--primary);
-        }
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* ADD THESE NEW STYLES HERE */
+footer a:hover {
+    color: var(--primary) !important;
+}
+
+footer a:hover img {
+    filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)) !important;
+}
 
         /* Modal styling */
         .modal {
@@ -1932,13 +1941,13 @@
     </section>
 
     <footer>
-        <p style="color: var(--gray-500); margin-bottom: 0.5rem;">
-            © 2025 Dr. Ewa J. Antczak. All rights reserved.
-        </p>
-        <p style="color: var(--gray-500); font-size: 0.875rem;">
-            
-        </p>
-    </footer>
+    <p style="color: var(--gray-500); margin-bottom: 0.5rem;">
+        © 2025 Dr. Ewa J. Antczak. All rights reserved.
+    </p>
+    <p style="color: var(--gray-500); font-size: 0.875rem;">
+        
+    </p>
+</footer>
 
     <script>
         window.addEventListener('scroll', function() {
