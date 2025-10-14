@@ -1080,6 +1080,24 @@ footer a:hover {
 footer a:hover img {
     filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.6)) !important;
 }
+        /* Resize and align footer logos consistently */
+.footer-icon {
+    width: 36px;          /* controls size — smaller = neater */
+    height: 36px;
+    object-fit: contain;
+    border-radius: 50%;   /* makes round or keeps symmetry */
+    background: transparent;
+}
+
+/* Optional: hover “pop” effect for a polished look */
+.footer-links a:hover .footer-icon {
+    transform: scale(1.15);
+    transition: transform 0.2s ease;
+}
+/* Hide icons inside the contact section (keep footer icons visible) */
+.contact-card .contact-icon {
+    display: none !important;
+}
 
         /* Modal styling */
         .modal {
