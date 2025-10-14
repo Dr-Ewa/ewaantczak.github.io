@@ -1393,7 +1393,23 @@ footer a:hover img {
                 padding: 1.25rem !important;
             }
         }
-    </style>
+        <style>
+  /* existing site styles here ... */
+
+  /* About → Read More accordion */
+  .read-more-content {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 600ms ease, opacity 600ms ease;
+  }
+
+  .read-more-content.open {
+    max-height: 5000px; /* big enough for full text */
+    opacity: 1;
+  }
+</style>
+
 </head>
 <body>
     <nav id="navbar">
@@ -1472,7 +1488,55 @@ footer a:hover img {
                 </p>
                 <p style="color: var(--gray-300); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
                     Today at Felixa, I'm applying two decades of insights to online toxicity across gaming and social media platforms, transforming digital communities through psychology-grounded AI.
+                    
                 </p>
+               <!-- READ MORE TOGGLE -->
+<div class="read-more-container" style="text-align: center; margin-top: 1.5rem;">
+  <button id="aboutReadMore" class="btn btn-outline" style="cursor: pointer;">Read More ▼</button>
+
+<div id="aboutMore" class="read-more-content" style="text-align: left; margin-top: 2rem;">
+    <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Professional Experience</h3>
+    <ul style="color: var(--gray-300); line-height: 1.8;">
+      <li>Founder & CEO – Felixa Health Inc. (2023–Present)</li>
+      <li>Founder & Director – Core Centre Inc. (2012–Present)</li>
+      <li>President & Founder – IdealMe Enrichment Foundation (2018–2025)</li>
+      <li>Founder & Project Director – Talk2Alex App (2019–2021)</li>
+      <li>Psychologist – Toronto Catholic District School Board (2010–2023)</li>
+      <li>Psychologist / Psychometrist – Celinski & Associates (2005–2016)</li>
+      <li>Assistant Professor – University of Social Sciences and Humanities, Warsaw (2001–2004)</li>
+      <li>Director of Qualitative Research – European Institute of Social Marketing (1999–2005)</li>
+      <li>Quantitative & Qualitative Research Provider – EEI (1998–2003)</li>
+      <li>Director & Associate Editor – Toronto Waterfront Magazine (2018–2022)</li>
+      <li>Journalist – Polish Radio & Television (PR III), Warsaw, Poland</li>
+    </ul>
+
+    <h3 style="color: var(--primary); margin-top: 2rem;">Advisory Boards & Committee Roles</h3>
+    <ul style="color: var(--gray-300); line-height: 1.8;">
+      <li>Resilient Kids Canada – Advisory Board Member / Program Collaborator (2021–Present)</li>
+      <li>International Peace Festival – Director (2019–2022)</li>
+      <li>Toronto Waterfront Awards – Director & Planning Committee Member (2018–2022)</li>
+      <li>Learning Disabilities Association of Peel Region (LDAO Peel) – Advisory & Educational Partner (2018–2020)</li>
+      <li>Toronto Catholic District School Board (TCDSB) – Committee Member (2010–2023)</li>
+      <li>Learning Disability Intensive Support Programming Committee</li>
+      <li>Learning Disability Programming Recommendations Committee</li>
+      <li>Alternative Curriculum & Assistive Technology Committee</li>
+      <li>Empower Reading Program Committee</li>
+      <li>Learning Disability Accountability Framework Committee</li>
+      <li>Ontario Psychological Association – Poster Session Coordinator (2013–2017)</li>
+    </ul>
+
+    <h3 style="color: var(--primary); margin-top: 2rem;">Recognitions & Awards</h3>
+    <ul style="color: var(--gray-300); line-height: 1.8;">
+      <li><strong>2018</strong> — Nomination for the Marr Neville Award — recognized for outstanding contributions to child and youth mental health in prevention and early intervention.</li>
+      <li><strong>2004</strong> — The State Committee for Scientific Research (KBN, Poland) — 2-year research grant for narrative cognition and prosocial behavior.</li>
+      <li><strong>2004</strong> — Award for Doctoral Thesis — recognized for excellence in social cognition research.</li>
+      <li><strong>2003</strong> — Doctoral Research Grant — narrative psychology and person perception.</li>
+      <li><strong>2001</strong> — Award for Master’s Thesis — fear and alexithymia in persuasive communication.</li>
+      <li><strong>2000</strong> — SWPS Award — empirical research on fear and perception in public communication psychology.</li>
+    </ul>
+  </div>
+</div>
+
             </div>
         </div>
     </section>
@@ -2185,6 +2249,26 @@ footer a:hover img {
                 closeToxicityModal();
             }
         });
+        // About section "Read More" accordion
+(function() {
+  const btn = document.getElementById('aboutReadMore');
+  const panel = document.getElementById('aboutMore');
+  if (!btn || !panel) return;
+
+  btn.setAttribute('aria-controls', 'aboutMore');
+  btn.setAttribute('aria-expanded', 'false');
+
+  btn.addEventListener('click', () => {
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open', !isOpen);
+    btn.textContent = isOpen ? 'Read More ▼' : 'Show Less ▲';
+    btn.setAttribute('aria-expanded', String(!isOpen));
+    if (!isOpen) {
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+})();
+
     </script>
 
     <!-- Talk Description Modal -->
