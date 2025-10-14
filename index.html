@@ -2249,25 +2249,45 @@ footer a:hover img {
                 closeToxicityModal();
             }
         });
-        // About section "Read More" accordion
-(function() {
+   // About section "Read More" accordion (robust)
+(function () {
   const btn = document.getElementById('aboutReadMore');
   const panel = document.getElementById('aboutMore');
   if (!btn || !panel) return;
+
+  // Make sure it starts collapsed
+  panel.style.maxHeight = '0px';
+  panel.style.opacity = '0';
+  panel.style.overflow = 'hidden';
 
   btn.setAttribute('aria-controls', 'aboutMore');
   btn.setAttribute('aria-expanded', 'false');
 
   btn.addEventListener('click', () => {
     const isOpen = panel.classList.contains('open');
-    panel.classList.toggle('open', !isOpen);
-    btn.textContent = isOpen ? 'Read More ▼' : 'Show Less ▲';
-    btn.setAttribute('aria-expanded', String(!isOpen));
-    if (!isOpen) {
+
+    if (isOpen) {
+      // closing
+      panel.style.maxHeight = panel.scrollHeight + 'px'; // set current so transition works
+      requestAnimationFrame(() => {
+        panel.style.maxHeight = '0px';
+        panel.style.opacity = '0';
+      });
+      panel.classList.remove('open');
+      btn.textContent = 'Read More ▼';
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      // opening
+      panel.classList.add('open');
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+      panel.style.opacity = '1';
+      btn.textContent = 'Show Less ▲';
+      btn.setAttribute('aria-expanded', 'true');
       panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   });
 })();
+
 
     </script>
 
